@@ -36,9 +36,6 @@
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleParticles.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
@@ -51,8 +48,14 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Archivos de recursos</Filter>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScene.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +83,6 @@
     <ClInclude Include="ModuleInput.h">
       <Filter>Archivos de recursos</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleParticles.h">
-      <Filter>Archivos de recursos</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleRender.h">
       <Filter>Archivos de recursos</Filter>
     </ClInclude>
@@ -95,11 +95,17 @@
     <ClInclude Include="Collider.h">
       <Filter>Archivos de recursos</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Archivos de recursos</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Archivos de recursos</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleScene.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

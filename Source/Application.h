@@ -3,13 +3,14 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 6
+#define NUM_MODULES 7
 
 class Module;
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
+class ModuleScene;
 //class ModulePlayer;
 //class SceneIntro;
 //class SceneLevel1;
@@ -42,7 +43,7 @@ public:
 public:
 
 	// Array to store the pointers for the different modules
-	Module* modules[NUM_MODULES];
+	Module* modules[NUM_MODULES] = { nullptr };
 
 	// All the modules stored individually
 	ModuleWindow* window = nullptr;
@@ -50,6 +51,7 @@ public:
 	ModuleTextures* textures = nullptr;
 	ModuleAudio* audio = nullptr;
 
+	ModuleScene* scene = nullptr;
 	//ModulePlayer* player = nullptr;
 
 	//SceneIntro* sceneIntro = nullptr;
