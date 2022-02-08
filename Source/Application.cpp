@@ -8,7 +8,7 @@
 //#include "ModulePlayer.h"
 //#include "SceneIntro.h"
 //#include "SceneLevel1.h"
-#include "ModuleParticles.h"
+//#include "ModuleParticles.h"
 //#include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 //#include "ModuleFadeToBlack.h"
@@ -29,13 +29,13 @@ Application::Application()
 	//modules[4] =	sceneIntro =	new SceneIntro(true);
 	//modules[5] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
 	//modules[6] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[4] =	particles =		new ModuleParticles(true);
+	//modules[4] =	particles =		new ModuleParticles(true);
 	//modules[8] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[5] =	collisions =	new ModuleCollisions(true);
+	modules[4] =	collisions =	new ModuleCollisions(true);
 	//modules[10] =	fade =			new ModuleFadeToBlack(true);
 	//modules[11] =	fonts =			new ModuleFonts(true);
-	modules[6] =	render =		new ModuleRender(true);
+	modules[5] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()
