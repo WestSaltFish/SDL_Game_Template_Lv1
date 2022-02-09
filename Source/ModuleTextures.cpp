@@ -55,8 +55,18 @@ bool ModuleTextures::CleanUp()
 	return true;
 }
 
-SDL_Texture* const ModuleTextures::Load(const char* path)
+SDL_Texture* const ModuleTextures::Load(char* path)
 {
+	// Check if this texture has already been charged
+	std::map<char*, SDL_Texture*>::iterator it;
+	it = texturePath.find(path);
+
+	if (it != texturePath.end())
+	{
+		// It the texture was already charged, return the charged texture
+		return texturePath.find(path)->second;
+	}
+
 	SDL_Texture* texture = nullptr;
 	SDL_Surface* surface = IMG_Load(path);
 
@@ -79,6 +89,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 				if (textures[i] == nullptr)
 				{
 					textures[i] = texture;
+
+					// Add texture to charged textures map
+					texturePath.insert(std::pair<char*, SDL_Texture*>(path, texture));
 					break;
 				}
 			}

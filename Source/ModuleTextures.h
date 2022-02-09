@@ -2,6 +2,7 @@
 #define __MODULETEXTURES_H__
 
 #include "Module.h"
+#include <map>
 
 #define MAX_TEXTURES 50
 
@@ -28,7 +29,7 @@ public:
 	// Loads a new SDL_Texture from a file path
 	// First creates an SDL_Surface, then converts it into SDL_Texture
 	// Returns nullptr if the texture could not be created
-	SDL_Texture* const Load(const char* path);
+	SDL_Texture* const Load(char* path);
 
 	// Removes the memory from SDL_Texture and removes it from the array
 	bool Unload(SDL_Texture* texture);
@@ -40,6 +41,8 @@ public:
 	// An array of all the loaded textures
 	// Allows us to keep track of all textures and free them on application exit
 	SDL_Texture* textures[MAX_TEXTURES] = { nullptr };
+
+	std::map<char*, SDL_Texture*> texturePath;
 };
 
 #endif // __MODULETEXTURES_H__
