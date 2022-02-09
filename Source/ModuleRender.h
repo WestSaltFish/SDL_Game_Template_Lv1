@@ -2,12 +2,22 @@
 #define __MODULERENDER_H__
 
 #include "Module.h"
-
+#include "RenderObject.hpp"
 #include "External/SDL/include/SDL_Rect.h"
+#include "Point.h"
+#include <vector>
+
+#define MAX_LAYERS 4
 
 struct SDL_Color;
 struct SDL_Texture;
 struct SDL_Renderer;
+
+struct RenderLayer
+{
+	bool sort = false;
+	std::vector<RenderObject> renderObjects;
+};
 
 class ModuleRender : public Module
 {
@@ -39,6 +49,20 @@ public:
 	// Destroys the rendering context
 	bool CleanUp() override;
 
+	void AddTextureRenderQueue(SDL_Texture* texture, iPoint pos, SDL_Rect section = { 0,0,0,0 },
+		float scale = 1, int layer = 0, float orderInlayer = 0.0f, float rotation = 0, 
+		SDL_RendererFlip flip = SDL_FLIP_NONE, float speed = 1.0f);
+
+	void AddRectRenderQueue(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255,
+		int layer = 1, float orderInlayer = 0.0f, bool filled = true, float speed = 1.0f);
+
+	void AddRenderObjectRenderQueue(RenderObject renderObject);
+
+	void SortingObjectsInLayer(std::vector<RenderObject>& layer);
+
+	void ClearRederQueue();
+
+	#pragma region OBSOLETE NOT USE!!!!!
 	// Draws a texture to the screen
 	// Param texture	- A valid SDL Texture, validation checks are not performed
 	// Param x, y		- Position x,y in the screen (upper left axis)
@@ -47,6 +71,7 @@ public:
 	bool DrawTexture(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr, float speed = 1.0f, bool useCamera = true);
 
 	bool DrawRectangle(const SDL_Rect& rect, SDL_Color color, float speed = 1.0f, bool useCamera = true);
+	#pragma endregion
 
 public:
 	// Rendering context used for any rendering action
@@ -59,6 +84,8 @@ public:
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
 
+private:
+	std::vector<RenderLayer> renderLayers;
 };
 
 #endif //__MODULERENDER_H__

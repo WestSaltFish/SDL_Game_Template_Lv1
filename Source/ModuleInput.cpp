@@ -82,6 +82,7 @@ UpdateResult ModuleInput::PreUpdate()
 
 	UpdateGamepadsInput();
 
+	// Close windows with escape
 	if(keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN)
 	{
 		return UpdateResult::UPDATE_STOP;

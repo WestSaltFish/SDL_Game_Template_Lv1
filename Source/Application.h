@@ -11,14 +11,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleAudio;
 class ModuleScene;
-//class ModulePlayer;
-//class SceneIntro;
-//class SceneLevel1;
-//class ModuleParticles;
 class ModuleCollisions;
-//class ModuleEnemies;
-//class ModuleFadeToBlack;
-//class ModuleFonts;
 class ModuleRender;
 
 class Application
@@ -52,17 +45,8 @@ public:
 	ModuleAudio* audio = nullptr;
 
 	ModuleScene* scene = nullptr;
-	//ModulePlayer* player = nullptr;
-
-	//SceneIntro* sceneIntro = nullptr;
-	//SceneLevel1* sceneLevel_1 = nullptr;
-
-	//ModuleEnemies* enemies = nullptr;
-	//ModuleParticles* particles = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
-	//ModuleFadeToBlack* fade = nullptr;
-	//ModuleFonts* fonts = nullptr;
 
 	ModuleRender* render = nullptr;
 };

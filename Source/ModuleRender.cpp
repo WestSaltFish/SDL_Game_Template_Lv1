@@ -11,7 +11,9 @@
 
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
+	camera.x = camera.y = 0;
 
+	renderLayers.resize(MAX_LAYERS);
 }
 
 ModuleRender::~ModuleRender()
@@ -72,8 +74,26 @@ UpdateResult ModuleRender::Update()
 
 UpdateResult ModuleRender::PostUpdate()
 {
+	// Sorting layers
+	for (int i = 0; i < renderLayers.size(); ++i)
+	{
+		if(renderLayers[i].sort) SortingObjectsInLayer(renderLayers[i].renderObjects);
+	}
+
+	//Draw
+	for (int i = 0; i < MAX_LAYERS; ++i)
+	{
+		for (int j = 0, length = renderLayers[i].renderObjects.size(); j < length; j++)
+		{
+			renderLayers[i].renderObjects[j].Draw(renderer);
+		}
+	}
+
 	// Update the screen
 	SDL_RenderPresent(renderer);
+
+	// Clear layers
+	ClearRederQueue();
 
 	return UpdateResult::UPDATE_CONTINUE;
 }
@@ -88,6 +108,81 @@ bool ModuleRender::CleanUp()
 	return true;
 }
 
+void ModuleRender::AddTextureRenderQueue(SDL_Texture* texture, iPoint pos, SDL_Rect section, float scale, int layer, float orderInlayer, float rotation, SDL_RendererFlip flip, float speed)
+{
+	RenderObject renderObject;
+
+	SDL_Rect destRect = { 0,0 };
+
+	if (layer >= MAX_LAYERS) speed = 0;	//If texture in UI layer, it moves alongside the camera-> , speed = 0;
+
+	renderObject.InitAsTexture(texture, destRect, section, layer, orderInlayer, flip, rotation, scale, speed);
+
+	renderObject.destRect.x = (int)(-camera.x * speed) + pos.x * App->window->scale;
+	renderObject.destRect.y = (int)(-camera.y * speed) + pos.y * App->window->scale;
+
+	if (section.h != 0 && section.w != 0)
+	{
+		renderObject.destRect.w = section.w;
+		renderObject.destRect.h = section.h;
+	}
+	else
+	{
+		// Collect the texture size into rect.w and rect.h variables
+		SDL_QueryTexture(texture, nullptr, nullptr, &renderObject.destRect.w, &renderObject.destRect.h);
+	}
+
+	renderObject.destRect.w *= scale * App->window->scale;
+	renderObject.destRect.h *= scale * App->window->scale;
+
+	renderLayers[layer].renderObjects.push_back(renderObject);
+}
+
+void ModuleRender::AddRectRenderQueue(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, int layer, float orderInlayer, bool filled, float speed)
+{
+	RenderObject renderObject;
+
+	SDL_Rect rec = 
+	{ (-camera.x * speed) + rect.x * App->window->scale, (-camera.y * speed) + rect.y * App->window->scale,
+		rect.w * App->window->scale, rect.h * App->window->scale };
+
+	renderObject.InitAsRect(rec, { r,g,b,a }, filled, layer, orderInlayer, speed);
+
+	renderLayers[layer].renderObjects.push_back(renderObject);
+}
+
+void ModuleRender::AddRenderObjectRenderQueue(RenderObject renderObject)
+{
+	renderLayers[renderObject.layer].renderObjects.push_back(renderObject);
+}
+
+void ModuleRender::SortingObjectsInLayer(std::vector<RenderObject>& objects)
+{
+	int less = 0;
+	int objSize = objects.size();
+
+	for (int i = 0; i < objSize; ++i)
+	{
+		less = i;
+		for (int j = i; j < objSize; ++j)
+		{
+			if (objects[j].orderInLayer < objects[less].orderInLayer)
+			{
+				std::swap(objects[j], objects[less]);
+			}
+		}
+	}
+}
+
+void ModuleRender::ClearRederQueue()
+{
+	for (int i = 0; i < MAX_LAYERS; i++)
+	{
+		renderLayers[i].renderObjects.clear();
+	}
+}
+
+#pragma region OBSOLETE
 // Draw to screen
 bool ModuleRender::DrawTexture(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, bool useCamera)
 {
@@ -147,3 +242,4 @@ bool ModuleRender::DrawRectangle(const SDL_Rect& rect, SDL_Color color, float sp
 
 	return ret;
 }
+#pragma endregion

@@ -33,6 +33,9 @@ public:
 
 	//The window's surface
 	SDL_Surface* screenSurface = nullptr;
+
+	// screen scale
+	int scale = 1;
 };
 
 #endif // __MODULEWINDOW_H__
