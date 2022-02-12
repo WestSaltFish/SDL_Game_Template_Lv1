@@ -2,6 +2,7 @@
 
 ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
+   
 }
 
 ModuleScene::~ModuleScene()
@@ -58,11 +59,7 @@ bool ModuleScene::CleanUp()
 
 void ModuleScene::ChangeScene(SceneName targetScene)
 {
-    // changeScene effect
-    
-    // curretScene CleanUp
-
-    // new Scene Start
-
-    // finish changeScene efect
+    scenes[currentSceneIndex]->CleanUp();
+    currentSceneIndex = targetScene;
+    scenes[currentSceneIndex]->Start();
 }

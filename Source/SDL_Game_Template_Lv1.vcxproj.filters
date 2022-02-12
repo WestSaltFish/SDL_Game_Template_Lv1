@@ -37,6 +37,12 @@
     <Filter Include="Archivos de origen\Application">
       <UniqueIdentifier>{3657563d-fb88-4f94-84b7-bb361f9c1da6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Scenes">
+      <UniqueIdentifier>{71a34e8c-7481-4aa6-8a47-25c98c6f6548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Scenes">
+      <UniqueIdentifier>{67475df4-bb52-43f7-9b52-5895c552c0ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -80,6 +86,18 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Archivos de origen\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Archivos de origen\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Archivos de origen\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameTemplate.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenuTemplate.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +151,21 @@
     </ClInclude>
     <ClInclude Include="RenderObject.hpp">
       <Filter>Archivos de encabezado\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Archivos de encabezado\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Archivos de encabezado\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Archivos de encabezado\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameTemplate.h">
+      <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenuTemplate.h">
+      <Filter>Archivos de encabezado\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

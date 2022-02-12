@@ -1,6 +1,9 @@
 #ifndef __SCENE_H__
 #define __SCENE_H__
 
+#include "GameObject.h"
+#include "List.h"
+
 class Scene
 {
 public:
@@ -8,17 +11,19 @@ public:
 
 	~Scene();
 
-	bool Init();
+	virtual bool Init();
 
-	bool Start();
+	virtual bool Start();
 
-	void PreUpdate();
+	virtual void PreUpdate();
 
-	void Update();
+	virtual void Update();
 
-	void PostUpdate();
+	virtual void PostUpdate();
 
-	void CleanUp();
+	virtual void CleanUp();
+
+	List<GameObject*> gameObjects;
 };
 
 #endif // !__SCENE_H__
