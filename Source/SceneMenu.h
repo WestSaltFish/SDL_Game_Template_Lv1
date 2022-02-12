@@ -1,5 +1,8 @@
-#pragma once
+#ifndef __SCENE_MENU_H__
+#define __SCENE_MENU_H__
+
 #include "Scene.h"
+
 class SceneMenu : public Scene
 {
 	// Add here any GameObject classes that every Menu Scene requires
@@ -23,4 +26,4 @@ public:
 	void CleanUp() override;
 
 };
-
+#endif

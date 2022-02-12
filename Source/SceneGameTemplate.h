@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SCENE_GAME_TEMPLATE_H__
+#define __SCENE_GAME_TEMPLATE_H__
 #include "SceneGame.h"
 class SceneGameTemplate : public SceneGame
 {
@@ -18,4 +19,4 @@ public:
 
 
 };
-
+#endif
