@@ -86,6 +86,8 @@ public:
 
 private:
 	std::vector<RenderLayer> renderLayers;
+
+	int uiLayer = MAX_LAYERS;
 };
 
 #endif //__MODULERENDER_H__

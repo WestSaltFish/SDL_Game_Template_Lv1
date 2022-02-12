@@ -52,6 +52,9 @@ bool Application::Init()
 
 UpdateResult Application::Update()
 {
+	// Get frame time in ms
+	float startFrame = SDL_GetTicks();
+
 	UpdateResult ret = UpdateResult::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
@@ -62,6 +65,15 @@ UpdateResult Application::Update()
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UpdateResult::UPDATE_CONTINUE;
+
+	// Get current frame time in ms
+	float currentFrameTime = SDL_GetTicks() - startFrame;
+
+	// IF this frame is 
+	if (currentFrameTime < frameTime)
+	{
+		SDL_Delay(frameTime -currentFrameTime);
+	}
 
 	return ret;
 }

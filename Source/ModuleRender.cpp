@@ -114,7 +114,11 @@ void ModuleRender::AddTextureRenderQueue(SDL_Texture* texture, iPoint pos, SDL_R
 
 	SDL_Rect destRect = { 0,0 };
 
-	if (layer >= MAX_LAYERS) speed = 0;	//If texture in UI layer, it moves alongside the camera-> , speed = 0;
+	if (uiLayer >= 0 && layer == uiLayer)
+	{
+		//If texture in UI layer, it moves alongside the camera-> , speed = 0;
+		speed = 0;
+	}
 
 	renderObject.InitAsTexture(texture, destRect, section, layer, orderInlayer, flip, rotation, scale, speed);
 
@@ -148,11 +152,23 @@ void ModuleRender::AddRectRenderQueue(const SDL_Rect& rect, Uint8 r, Uint8 g, Ui
 
 	renderObject.InitAsRect(rec, { r,g,b,a }, filled, layer, orderInlayer, speed);
 
+	if (uiLayer >= 0 && renderObject.layer == uiLayer)
+	{
+		//If texture in UI layer, it moves alongside the camera-> , speed = 0;
+		renderObject.speedRegardCamera = 0;
+	}
+
 	renderLayers[layer].renderObjects.push_back(renderObject);
 }
 
 void ModuleRender::AddRenderObjectRenderQueue(RenderObject renderObject)
 {
+	if (uiLayer >= 0 && renderObject.layer == uiLayer)
+	{
+		//If texture in UI layer, it moves alongside the camera-> , speed = 0;
+		renderObject.speedRegardCamera = 0;
+	}
+
 	renderLayers[renderObject.layer].renderObjects.push_back(renderObject);
 }
 

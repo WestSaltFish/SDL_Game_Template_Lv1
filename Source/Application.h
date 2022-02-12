@@ -49,6 +49,10 @@ public:
 	ModuleCollisions* collisions = nullptr;
 
 	ModuleRender* render = nullptr;
+
+private:
+	// Frame time in ms
+	float frameTime = (1.0 / 60.0) * 1000;
 };
 
 // Global var made extern for Application ---

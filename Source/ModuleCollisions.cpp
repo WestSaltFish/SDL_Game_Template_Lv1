@@ -4,6 +4,8 @@
 
 #include "ModuleRender.h"
 #include "ModuleInput.h"
+#include "GameObject.h"
+#include "Collider.h"
 
 #include "External/SDL/include/SDL_Scancode.h"
 
@@ -11,36 +13,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
-
-	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
-	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::WALL][Collider::Type::PLAYER_SHOT] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY_SHOT] = true;
-
-	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_SHOT] = true;
-
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_SHOT] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_SHOT] = false;
-
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::WALL] = true;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER_SHOT] = false;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY_SHOT] = false;
-
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::PLAYER_SHOT] = false;
-	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::ENEMY_SHOT] = false;
 }
 
 // Destructor
@@ -51,16 +23,6 @@ ModuleCollisions::~ModuleCollisions()
 
 UpdateResult ModuleCollisions::PreUpdate()
 {
-	// Remove all colliders scheduled for deletion
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
-	{
-		if(colliders[i] != nullptr && colliders[i]->pendingToDelete == true)
-		{
-			delete colliders[i];
-			colliders[i] = nullptr;
-		}
-	}
-
 	Collider* c1;
 	Collider* c2;
 
@@ -81,13 +43,26 @@ UpdateResult ModuleCollisions::PreUpdate()
 
 			c2 = colliders[k];
 
-			if(matrix[c1->type][c2->type] && c1->Intersects(c2->rect))
+			// If is coll
+			if(c1->Intersects(c2->rect))
 			{
-  				for (uint i = 0; i < MAX_LISTENERS; ++i)
-					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision(c1, c2);
-				
-				for (uint i = 0; i < MAX_LISTENERS; ++i)
-					if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
+				c1->gameObject->OnCollisionEnter(c2->gameObject);
+				c2->gameObject->OnCollisionEnter(c1->gameObject);
+			}
+		}
+
+		int count = 0;
+
+		// Check if has collision exit in c1
+		for (std::vector<Collider>::iterator it = c1->colliders.begin(); it!= c1->colliders.end(); ++it, ++count)
+		{
+			// If not coll
+			if(!c1->Intersects(c1->colliders[count].rect))
+			{
+				// Collision exit
+				c1->gameObject->OnCollisionExit(c1->colliders[count].gameObject);
+				c1->colliders.erase(it);
+				break;
 			}
 		}
 	}
@@ -111,34 +86,34 @@ UpdateResult ModuleCollisions::PostUpdate()
 
 void ModuleCollisions::DebugDraw()
 {
-	Uint8 alpha = 80;
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
-	{
-		if(colliders[i] == nullptr)
-			continue;
-		
-		switch(colliders[i]->type)
-		{
-			case Collider::Type::NONE: // white
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
-			break;
-			case Collider::Type::WALL: // blue
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
-			break;
-			case Collider::Type::PLAYER: // green
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
-			break;
-			case Collider::Type::ENEMY: // red
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
-			break;
-			case Collider::Type::PLAYER_SHOT: // yellow
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
-			break;
-			case Collider::Type::ENEMY_SHOT: // magenta
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
-			break;
-		}
-	}
+	//Uint8 alpha = 80;
+	//for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	//{
+	//	if(colliders[i] == nullptr)
+	//		continue;
+	//	
+	//	switch(colliders[i]->type)
+	//	{
+	//		case Collider::Type::NONE: // white
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
+	//		break;
+	//		case Collider::Type::WALL: // blue
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
+	//		break;
+	//		case Collider::Type::PLAYER: // green
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
+	//		break;
+	//		case Collider::Type::ENEMY: // red
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
+	//		break;
+	//		case Collider::Type::PLAYER_SHOT: // yellow
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
+	//		break;
+	//		case Collider::Type::ENEMY_SHOT: // magenta
+	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
+	//		break;
+	//	}
+	//}
 }
 
 // Called before quitting
@@ -158,7 +133,7 @@ bool ModuleCollisions::CleanUp()
 	return true;
 }
 
-Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Module* listener)
+Collider* ModuleCollisions::AddCollider(SDL_Rect rect)
 {
 	Collider* ret = nullptr;
 
@@ -166,7 +141,7 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 	{
 		if(colliders[i] == nullptr)
 		{
-			ret = colliders[i] = new Collider(rect, type, listener);
+			ret = colliders[i] = new Collider(rect);
 			break;
 		}
 	}

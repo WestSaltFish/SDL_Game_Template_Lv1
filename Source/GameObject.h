@@ -5,30 +5,40 @@
 #include <string>
 
 class Collider;
+class RenderObject;
 
 class GameObject
 {
 public:
 	std::string name = "gameObject";
 
+private:
 	Collider* col = nullptr;
+
+	RenderObject* renderObject = nullptr;
 
 	iPoint position = { 0,0 };
 
+	bool pendingToDelete = false;
+
 public:
-	GameObject();
+	GameObject(iPoint position = { 0,0 }, std::string name = "gameObject");
 
 	~GameObject();
 
-	void Start();
+	virtual void Start();
 
-	void PreUpdate();
+	virtual void PreUpdate();
 
-	void Update();
+	virtual void Update();
 
-	void PostUpdate();
+	virtual void PostUpdate();
 
-	void Clean();
+	virtual void OnCollisionEnter(GameObject* g);
+
+	virtual void OnCollisionExit(GameObject* g);
+
+	virtual void CleanUp();
 };
 
 #endif // !__GAMEOBJECT_H__
