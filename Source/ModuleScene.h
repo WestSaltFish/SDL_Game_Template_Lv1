@@ -15,18 +15,15 @@ class ModuleScene : public Module
 {
 public:
 	Scene* scenes[NUM_SCENES] = { nullptr };
-	SceneName currentSceneIndex = SCENE_MENU;
+	SceneName currentSceneIndex = SCENE_GAME;
 public:
 	// Constructor
-	ModuleScene(bool startEnabled);
+	ModuleScene();
 
 	// Destructor
 	~ModuleScene();
 
 	// Called on application start.
-	bool Init() override;
-
-	// Called after Init()
 	bool Start() override;
 
 	// Called at the beginning of the application loop

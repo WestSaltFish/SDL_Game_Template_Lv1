@@ -7,7 +7,7 @@
 
 //#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-ModuleAudio::ModuleAudio(bool startEnabled) : Module(startEnabled)
+ModuleAudio::ModuleAudio() : Module()
 {
 	for(uint i = 0; i < MAX_FX; ++i) soundFx[i] = nullptr;
 }

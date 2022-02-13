@@ -6,11 +6,6 @@ SceneGame::SceneGame()
 
 }
 
-bool SceneGame::Init()
-{
-    return true;
-}
-
 bool SceneGame::Start()
 {
     Scene::Start();

@@ -15,13 +15,13 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 
-	modules[0] =	window =		new ModuleWindow(true);
-	modules[1] =	input =			new ModuleInput(true);
-	modules[2] =	textures =		new ModuleTextures(true);
-	modules[3] =	audio =			new ModuleAudio(true);
-	modules[4] =	scene =			new ModuleScene(true);
-	modules[5] =	collisions =	new ModuleCollisions(true);
-	modules[6] =	render =		new ModuleRender(true);
+	modules[0] =	window =		new ModuleWindow();
+	modules[1] =	input =			new ModuleInput();
+	modules[2] =	textures =		new ModuleTextures();
+	modules[3] =	audio =			new ModuleAudio();
+	modules[4] =	scene =			new ModuleScene();
+	modules[5] =	collisions =	new ModuleCollisions();
+	modules[6] =	render =		new ModuleRender();
 }
 
 Application::~Application()
@@ -39,13 +39,9 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// All modules (active and disabled) will be initialized
+	// All modules will be 'started'
 	for (int i = 0; i < NUM_MODULES && ret; ++i)
-		ret = modules[i]->Init();
-
-	// Only active modules will be 'started'
-	for (int i = 0; i < NUM_MODULES && ret; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
+		ret = modules[i]->Start();
 
 	return ret;
 }
@@ -58,13 +54,13 @@ UpdateResult Application::Update()
 	UpdateResult ret = UpdateResult::UPDATE_CONTINUE;
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->PreUpdate();
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->Update();
 
 	for (int i = 0; i < NUM_MODULES && ret == UpdateResult::UPDATE_CONTINUE; ++i)
-		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UpdateResult::UPDATE_CONTINUE;
+		ret = modules[i]->PostUpdate();
 
 	// Get current frame time in ms
 	float currentFrameTime = SDL_GetTicks() - startFrame;
@@ -83,7 +79,7 @@ bool Application::CleanUp()
 	bool ret = true;
 
 	for (int i = NUM_MODULES - 1; i >= 0 && ret; --i)
-		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
+		ret = modules[i]->CleanUp();
 
 	return ret;
 } 

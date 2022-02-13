@@ -2,7 +2,7 @@
 #define __COLLIDER_H__
 
 #include "External/SDL/include/SDL_Rect.h"
-#include <vector>
+#include "List.h"
 
 class Module;
 class GameObject;
@@ -19,7 +19,8 @@ struct Collider
 	// Variables
 	SDL_Rect rect;
 	GameObject* gameObject = nullptr;
-	std::vector<Collider> colliders;
+
+	List<Collider*> colliders;
 };
 
 #endif // !__COLLIDER_H__

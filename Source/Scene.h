@@ -11,8 +11,6 @@ public:
 
 	~Scene();
 
-	virtual bool Init();
-
 	virtual bool Start();
 
 	virtual void PreUpdate();
@@ -22,6 +20,8 @@ public:
 	virtual void PostUpdate();
 
 	virtual void CleanUp();
+
+	void DestroyedGameObject(GameObject* g);
 
 	List<GameObject*> gameObjects;
 };

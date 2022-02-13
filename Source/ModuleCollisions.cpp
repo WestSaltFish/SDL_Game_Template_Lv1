@@ -9,7 +9,7 @@
 
 #include "External/SDL/include/SDL_Scancode.h"
 
-ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
+ModuleCollisions::ModuleCollisions() : Module()
 {
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
@@ -47,21 +47,25 @@ UpdateResult ModuleCollisions::PreUpdate()
 			if(c1->Intersects(c2->rect))
 			{
 				c1->gameObject->OnCollisionEnter(c2->gameObject);
-				c2->gameObject->OnCollisionEnter(c1->gameObject);
+				// Add in collider list
+				c1->colliders.add(c2);
+
+				c2->gameObject->OnCollisionEnter(c1->gameObject);	
+				// Add in collider list
+				c2->colliders.add(c1);
 			}
 		}
 
-		int count = 0;
-
 		// Check if has collision exit in c1
-		for (std::vector<Collider>::iterator it = c1->colliders.begin(); it!= c1->colliders.end(); ++it, ++count)
+		for (int i = 0, count = c1->colliders.count() ; i < count; i++)
 		{
 			// If not coll
-			if(!c1->Intersects(c1->colliders[count].rect))
+			if(!c1->Intersects(c1->colliders[count]->rect))
 			{
 				// Collision exit
-				c1->gameObject->OnCollisionExit(c1->colliders[count].gameObject);
-				c1->colliders.erase(it);
+				c1->gameObject->OnCollisionExit(c1->colliders[count]->gameObject);
+				// Remove in the collision list
+				c1->colliders.remove(c1->colliders.At(count));
 				break;
 			}
 		}

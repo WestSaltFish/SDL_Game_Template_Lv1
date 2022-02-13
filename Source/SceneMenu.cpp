@@ -4,11 +4,6 @@ SceneMenu::SceneMenu()
 {
 }
 
-bool SceneMenu::Init()
-{
-    return true;
-}
-
 bool SceneMenu::Start()
 {
     Scene::Start();

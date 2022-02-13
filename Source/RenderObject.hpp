@@ -23,7 +23,8 @@ public:
 	float orderInLayer = 0.0f;
 	float scale = 1.0f;
 	float speedRegardCamera = 1.0f;
-	bool draw = false;
+	// if want to draw this object
+	bool draw = true;
 
 	// Rect
 	SDL_Color color = { 0,0,0,0 };

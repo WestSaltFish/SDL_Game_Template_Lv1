@@ -9,7 +9,7 @@
 #include "External/SDL/include/SDL_render.h"
 #include "External/SDL/include/SDL_scancode.h"
 
-ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
+ModuleRender::ModuleRender() : Module()
 {
 	camera.x = camera.y = 0;
 
@@ -21,7 +21,7 @@ ModuleRender::~ModuleRender()
 
 }
 
-bool ModuleRender::Init()
+bool ModuleRender::Start()
 {
 	LOG("Creating Renderer context");
 	bool ret = true;	

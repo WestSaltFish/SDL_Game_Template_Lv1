@@ -23,14 +23,14 @@ class ModuleRender : public Module
 {
 public:
 	// Constructor
-	ModuleRender(bool startEnabled);
+	ModuleRender();
 
 	// Destructor
 	~ModuleRender();
 
 	// Called on application start.
 	// Creates the rendering context using the program's window.
-	bool Init() override;
+	bool Start() override;
 
 	// Called at the beginning of the application loop
 	// Clears the rendering context to a background color

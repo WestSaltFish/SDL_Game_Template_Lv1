@@ -13,8 +13,6 @@ public:
 
 	SceneMenu();
 
-	bool Init() override;
-
 	bool Start() override;
 
 	void PreUpdate() override;

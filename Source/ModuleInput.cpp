@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
+ModuleInput::ModuleInput() : Module()
 {
 	for (uint i = 0; i < MAX_KEYS; ++i) keys[i] = KEY_IDLE;
 
@@ -17,7 +17,7 @@ ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 ModuleInput::~ModuleInput()
 {}
 
-bool ModuleInput::Init()
+bool ModuleInput::Start()
 {
 	LOG("Init SDL input event system");
 	bool ret = true;

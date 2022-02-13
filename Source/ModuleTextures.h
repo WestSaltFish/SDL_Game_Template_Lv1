@@ -12,14 +12,14 @@ class ModuleTextures : public Module
 {
 public:
 	// Constructor
-	ModuleTextures(bool startEnabled);
+	ModuleTextures();
 
 	// Destructor
 	~ModuleTextures();
 
 	// Called on application start.
 	// Initializes the SDL_Image library
-	bool Init() override;
+	bool Start() override;
 
 	// Called on application exit.
 	// Frees the memory from all stored textures

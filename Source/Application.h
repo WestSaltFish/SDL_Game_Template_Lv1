@@ -17,7 +17,6 @@ class ModuleRender;
 class Application
 {
 public:
-
 	// Constructor. Creates all necessary modules for the application
 	Application();
 

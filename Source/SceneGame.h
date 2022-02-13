@@ -12,8 +12,6 @@ public:
 
 	SceneGame();
 
-	bool Init() override;
-
 	bool Start() override;
 
 	void PreUpdate() override;

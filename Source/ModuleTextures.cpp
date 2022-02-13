@@ -8,7 +8,7 @@
 
 //#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
-ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled)
+ModuleTextures::ModuleTextures() : Module()
 {
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
 		textures[i] = nullptr;
@@ -17,7 +17,7 @@ ModuleTextures::ModuleTextures(bool startEnabled) : Module(startEnabled)
 ModuleTextures::~ModuleTextures()
 {}
 
-bool ModuleTextures::Init()
+bool ModuleTextures::Start()
 {
 	LOG("Init Image library");
 	bool ret = true;

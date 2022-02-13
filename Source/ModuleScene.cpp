@@ -1,22 +1,12 @@
 #include "ModuleScene.h"
 
-ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
+ModuleScene::ModuleScene() : Module()
 {
    
 }
 
 ModuleScene::~ModuleScene()
 {
-}
-
-bool ModuleScene::Init()
-{
-    return true;
-
-    for (int i = 0; i < NUM_SCENES; i++)
-    {
-        if(scenes[i]) scenes[i]->Init();
-    }
 }
 
 bool ModuleScene::Start()

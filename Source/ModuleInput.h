@@ -44,14 +44,14 @@ class ModuleInput : public Module
 {
 public:
 	// Constructor
-	ModuleInput(bool startEnabled);
+	ModuleInput();
 
 	// Destructor
 	~ModuleInput();
 
 	// Called on application start.
 	// Initializes the SDL system for input detection
-	bool Init() override;
+	bool Start() override;
 
 	// Called at the beginning of the application loop
 	// Updates all input data received from SDL

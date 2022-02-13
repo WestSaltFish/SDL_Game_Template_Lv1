@@ -8,11 +8,6 @@ Scene::~Scene()
 {
 }
 
-bool Scene::Init()
-{
-    return true;
-}
-
 bool Scene::Start()
 {
     for (int i = 0; i < gameObjects.count(); i++)
@@ -70,4 +65,17 @@ void Scene::CleanUp()
     }
     
     gameObjects.clearPtr();
+}
+
+void Scene::DestroyedGameObject(GameObject* g)
+{
+    // Get index of this gameObject in global gameobjects list
+    int index = gameObjects.find(g);
+
+    // If exist in the list
+    if (index >= 0)
+    {
+        // Delete and remove this gameobject in the list
+        gameObjects.delPtr(gameObjects.At(index));
+    }
 }

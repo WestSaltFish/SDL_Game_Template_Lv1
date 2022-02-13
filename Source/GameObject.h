@@ -2,10 +2,11 @@
 #define __GAMEOBJECT_H__
 
 #include "Point.h"
-#include <string>
+#include "RenderObject.hpp"
+
+#define MAX_TEXTURES 2
 
 class Collider;
-class RenderObject;
 
 class GameObject
 {
@@ -15,7 +16,7 @@ public:
 private:
 	Collider* col = nullptr;
 
-	RenderObject* renderObject = nullptr;
+	RenderObject renderObjects[MAX_TEXTURES];
 
 	iPoint position = { 0,0 };
 

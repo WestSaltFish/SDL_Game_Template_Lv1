@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\Base Class">
-      <UniqueIdentifier>{0e2c91af-6127-4092-86de-338fe0053e33}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de origen\Base Class">
       <UniqueIdentifier>{b15fae4d-35e7-47c8-9a2f-fb338d472b02}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,15 @@
     </Filter>
     <Filter Include="Archivos de encabezado\Scenes">
       <UniqueIdentifier>{67475df4-bb52-43f7-9b52-5895c552c0ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\GameObjects">
+      <UniqueIdentifier>{7853a974-e8c2-49fa-8456-3a027956f8ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\GameObjects">
+      <UniqueIdentifier>{7d308c7b-9a6d-4b42-8262-159a3dd65bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Base Class">
+      <UniqueIdentifier>{0e2c91af-6127-4092-86de-338fe0053e33}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="SceneMenuTemplate.cpp">
       <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTemplate.cpp">
+      <Filter>Archivos de origen\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="SceneMenuTemplate.h">
       <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTemplate.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

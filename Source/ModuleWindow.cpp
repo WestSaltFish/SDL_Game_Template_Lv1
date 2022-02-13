@@ -6,13 +6,13 @@
 #include "External/SDL/include/SDL.h"
 
 
-ModuleWindow::ModuleWindow(bool startEnabled) : Module(startEnabled)
+ModuleWindow::ModuleWindow() : Module()
 {}
 
 ModuleWindow::~ModuleWindow()
 {}
 
-bool ModuleWindow::Init()
+bool ModuleWindow::Start()
 {
 	LOG("Init SDL window and surface");
 	bool ret = true;
