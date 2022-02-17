@@ -23,7 +23,7 @@ public:
 	// Destructor
 	~ModuleScene();
 
-	// Called on application start.
+	// Called after Init.
 	bool Start() override;
 
 	// Called at the beginning of the application loop

@@ -1,13 +1,22 @@
 #include "Collider.h"
 
-Collider::Collider(SDL_Rect rectangle): rect(rectangle)
+Collider::Collider(SDL_Rect rectangle, std::string tag, iPoint offset)
 {
+	this->rect = rectangle;
+	this->tag = tag;
+	this->offsetWithGameObject = offset;
 }
 
 void Collider::SetPos(int x, int y)
 {
-	rect.x = x;
-	rect.y = y;
+	rect.x = x + offsetWithGameObject.x;
+	rect.y = y + offsetWithGameObject.y;
+}
+
+void Collider::SetPos(iPoint pos)
+{
+	rect.x = pos.x + offsetWithGameObject.x;
+	rect.y = pos.y + offsetWithGameObject.y;
 }
 
 bool Collider::Intersects(const SDL_Rect& r) const

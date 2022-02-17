@@ -1,8 +1,11 @@
 #include "ModuleScene.h"
+#include "SceneMenuTemplate.h"
+#include "SceneGameTemplate.h"
 
 ModuleScene::ModuleScene() : Module()
 {
-   
+    scenes[SCENE_MENU] = new SceneMenuTemplate();
+    scenes[SCENE_GAME] = new SceneGameTemplate();
 }
 
 ModuleScene::~ModuleScene()
@@ -41,7 +44,11 @@ bool ModuleScene::CleanUp()
 {
     for (int i = 0; i < NUM_SCENES; i++)
     {
-        if (scenes[i]) scenes[i]->CleanUp();
+        if (scenes[i])
+        {
+            scenes[i]->CleanUp();
+            RELEASE(scenes[i]);
+        }
     }
 
     return true;

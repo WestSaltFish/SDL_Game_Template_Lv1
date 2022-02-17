@@ -13,10 +13,17 @@ enum class PlayerStates
 	HIT
 };
 
+// Player RenderLayers
+enum class PlayerRenderLayer
+{
+	PLAYER = 0,
+	SHADOW
+};
+
 class PlayerTemplate : public GameObject
 {
 public:	
-	PlayerTemplate();
+	PlayerTemplate(iPoint pos = { 0,0 }, std::string name = "Player");
 
 	~PlayerTemplate();
 
@@ -30,9 +37,15 @@ public:
 
 	void CleanUp() override;
 
+public:
+	void Movement();
+
+	void Animations();
+
 private:
 	Animation move;
 	Animation idle;
+	int speed = 2;
 
 	// You have to put PlayerState:: to insist that it is a enum class
 	PlayerStates state = PlayerStates::IDLE;

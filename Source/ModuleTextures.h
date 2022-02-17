@@ -1,12 +1,20 @@
 #ifndef __MODULETEXTURES_H__
 #define __MODULETEXTURES_H__
 
-#include "Module.h"
 #include <map>
+#include <string>
+#include "Module.h"
+#include "List.h"
 
 #define MAX_TEXTURES 50
 
 struct SDL_Texture;
+
+struct TexturePath
+{
+	std::string path = "";
+	uint index = 0;
+};
 
 class ModuleTextures : public Module
 {
@@ -29,7 +37,7 @@ public:
 	// Loads a new SDL_Texture from a file path
 	// First creates an SDL_Surface, then converts it into SDL_Texture
 	// Returns nullptr if the texture could not be created
-	SDL_Texture* const Load(char* path);
+	SDL_Texture* const Load(const char* path);
 
 	// Retrieve size of a texture by modifying parameters with and height
 	void GetTextureSize(const SDL_Texture* texture, uint& width, uint& height) const;
@@ -39,7 +47,7 @@ public:
 	// Allows us to keep track of all textures and free them on application exit
 	SDL_Texture* textures[MAX_TEXTURES] = { nullptr };
 
-	std::map<char*, SDL_Texture*> texturePath;
+	List<TexturePath> texturePath;
 };
 
 #endif // __MODULETEXTURES_H__

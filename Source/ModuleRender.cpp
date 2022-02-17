@@ -21,7 +21,7 @@ ModuleRender::~ModuleRender()
 
 }
 
-bool ModuleRender::Start()
+bool ModuleRender::Init()
 {
 	LOG("Creating Renderer context");
 	bool ret = true;	
@@ -47,7 +47,7 @@ bool ModuleRender::Start()
 UpdateResult ModuleRender::PreUpdate()
 {
 	// Set the color used for drawing operations
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
 	// Clear rendering target
 	SDL_RenderClear(renderer);
@@ -168,6 +168,23 @@ void ModuleRender::AddRenderObjectRenderQueue(RenderObject renderObject)
 		//If texture in UI layer, it moves alongside the camera-> , speed = 0;
 		renderObject.speedRegardCamera = 0;
 	}
+
+	renderObject.destRect.x = (int)(-camera.x * renderObject.speedRegardCamera) + renderObject.destRect.x * App->window->scale;
+	renderObject.destRect.y = (int)(-camera.y * renderObject.speedRegardCamera) + renderObject.destRect.y * App->window->scale;
+
+	if (renderObject.section.h != 0 && renderObject.section.w != 0)
+	{
+		renderObject.destRect.w = renderObject.section.w;
+		renderObject.destRect.h = renderObject.section.h;
+	}
+	else
+	{
+		// Collect the texture size into rect.w and rect.h variables
+		SDL_QueryTexture(renderObject.texture, nullptr, nullptr, &renderObject.destRect.w, &renderObject.destRect.h);
+	}
+
+	renderObject.destRect.w *= renderObject.scale * App->window->scale;
+	renderObject.destRect.h *= renderObject.scale * App->window->scale;
 
 	renderLayers[renderObject.layer].renderObjects.push_back(renderObject);
 }

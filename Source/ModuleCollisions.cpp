@@ -90,34 +90,41 @@ UpdateResult ModuleCollisions::PostUpdate()
 
 void ModuleCollisions::DebugDraw()
 {
-	//Uint8 alpha = 80;
-	//for(uint i = 0; i < MAX_COLLIDERS; ++i)
-	//{
-	//	if(colliders[i] == nullptr)
-	//		continue;
-	//	
-	//	switch(colliders[i]->type)
-	//	{
-	//		case Collider::Type::NONE: // white
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
-	//		break;
-	//		case Collider::Type::WALL: // blue
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
-	//		break;
-	//		case Collider::Type::PLAYER: // green
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
-	//		break;
-	//		case Collider::Type::ENEMY: // red
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
-	//		break;
-	//		case Collider::Type::PLAYER_SHOT: // yellow
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
-	//		break;
-	//		case Collider::Type::ENEMY_SHOT: // magenta
-	//		App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
-	//		break;
-	//	}
-	//}
+	Uint8 alpha = 80;
+	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	{
+		if(colliders[i] == nullptr)
+			continue;
+
+		if(colliders[i]->tag == "None")
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha }); // white		
+		else 
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });// blue
+
+		/*
+		switch(colliders[i]->tag)
+		{
+			case Collider::Type::NONE: // white
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
+			break;
+			case Collider::Type::WALL: // blue
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
+			break;
+			case Collider::Type::PLAYER: // green
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
+			break;
+			case Collider::Type::ENEMY: // red
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
+			break;
+			case Collider::Type::PLAYER_SHOT: // yellow
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
+			break;
+			case Collider::Type::ENEMY_SHOT: // magenta
+			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
+			break;
+		}
+		*/
+	}
 }
 
 // Called before quitting

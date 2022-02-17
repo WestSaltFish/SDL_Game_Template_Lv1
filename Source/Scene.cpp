@@ -67,6 +67,11 @@ void Scene::CleanUp()
     gameObjects.clearPtr();
 }
 
+void Scene::AddGameObject(GameObject* g)
+{
+    gameObjects.add(g);
+}
+
 void Scene::DestroyedGameObject(GameObject* g)
 {
     // Get index of this gameObject in global gameobjects list

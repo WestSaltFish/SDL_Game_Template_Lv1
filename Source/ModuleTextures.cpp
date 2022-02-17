@@ -6,8 +6,6 @@
 #include "External/SDL/include/SDL.h"
 #include "External/SDL_image/include/SDL_image.h"
 
-//#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
-
 ModuleTextures::ModuleTextures() : Module()
 {
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
@@ -55,16 +53,15 @@ bool ModuleTextures::CleanUp()
 	return true;
 }
 
-SDL_Texture* const ModuleTextures::Load(char* path)
+SDL_Texture* const ModuleTextures::Load(const char* path)
 {
 	// Check if this texture has already been charged
-	std::map<char*, SDL_Texture*>::iterator it;
-	it = texturePath.find(path);
-
-	if (it != texturePath.end())
+	for (int i = 0, count = texturePath.count(); i < count; i++)
 	{
-		// It the texture was already charged, return the charged texture
-		return texturePath.find(path)->second;
+		if (texturePath[i].path == path)
+		{
+			return textures[texturePath[i].index];
+		}
 	}
 
 	SDL_Texture* texture = nullptr;
@@ -91,7 +88,9 @@ SDL_Texture* const ModuleTextures::Load(char* path)
 					textures[i] = texture;
 
 					// Add texture to charged textures map
-					texturePath.insert(std::pair<char*, SDL_Texture*>(path, texture));
+					TexturePath tp = { path, i};
+					texturePath.add(tp);
+
 					break;
 				}
 			}

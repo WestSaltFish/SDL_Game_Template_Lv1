@@ -51,7 +51,7 @@ public:
 
 	// Called on application start.
 	// Initializes the SDL system for input detection
-	bool Start() override;
+	bool Init() override;
 
 	// Called at the beginning of the application loop
 	// Updates all input data received from SDL

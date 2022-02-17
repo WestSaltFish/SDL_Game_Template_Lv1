@@ -17,7 +17,7 @@ ModuleInput::ModuleInput() : Module()
 ModuleInput::~ModuleInput()
 {}
 
-bool ModuleInput::Start()
+bool ModuleInput::Init()
 {
 	LOG("Init SDL input event system");
 	bool ret = true;

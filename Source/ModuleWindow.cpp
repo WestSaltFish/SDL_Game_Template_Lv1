@@ -12,7 +12,7 @@ ModuleWindow::ModuleWindow() : Module()
 ModuleWindow::~ModuleWindow()
 {}
 
-bool ModuleWindow::Start()
+bool ModuleWindow::Init()
 {
 	LOG("Init SDL window and surface");
 	bool ret = true;

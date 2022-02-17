@@ -1,8 +1,11 @@
 #ifndef __SCENE_MENU_TEMPLATE_H__
 #define __SCENE_MENU_TEMPLATE_H__
+
 #include "SceneMenu.h"
+
 class SceneMenuTemplate : public SceneMenu
 {
+public:
 	SceneMenuTemplate();
 
 	bool Start() override;

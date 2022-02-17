@@ -13,7 +13,7 @@ class GameObject
 public:
 	std::string name = "gameObject";
 
-private:
+protected:
 	Collider* col = nullptr;
 
 	RenderObject renderObjects[MAX_TEXTURES];
@@ -40,6 +40,9 @@ public:
 	virtual void OnCollisionExit(GameObject* g);
 
 	virtual void CleanUp();
+
+protected:
+	void AddtoList();
 };
 
 #endif // !__GAMEOBJECT_H__

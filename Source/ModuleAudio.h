@@ -21,12 +21,12 @@ public:
 
 	// Called on application start.
 	// Initializes the SDL audio subsystem and SDL Mixer
-	bool Init();
+	bool Init() override;
 
 	// Called on application exit.
 	// Frees the memory from all stored audio fx and music
 	// Uninitializes the SDL_Mixer library
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Plays a new music file from a file path
 	// First loads the music file into the Mix_Music structure

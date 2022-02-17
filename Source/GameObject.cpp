@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
+#include "ModuleScene.h"
 
 GameObject::GameObject(iPoint position, std::string name)
 {
@@ -29,6 +30,7 @@ void GameObject::PreUpdate()
 void GameObject::Update()
 {
 	// Update collision position with this.position
+	if (col != nullptr)
 	col->SetPos(position.x, position.y);
 }
 
@@ -61,4 +63,9 @@ void GameObject::OnCollisionExit(GameObject* g)
 
 void GameObject::CleanUp()
 {
+}
+
+void GameObject::AddtoList()
+{
+	App->scene->scenes[App->scene->currentSceneIndex]->AddGameObject(this);
 }

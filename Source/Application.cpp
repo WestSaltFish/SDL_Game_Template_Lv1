@@ -39,6 +39,10 @@ bool Application::Init()
 {
 	bool ret = true;
 
+	// All modules will be initialized
+	for (int i = 0; i < NUM_MODULES && ret; ++i)
+		ret = modules[i]->Init();
+
 	// All modules will be 'started'
 	for (int i = 0; i < NUM_MODULES && ret; ++i)
 		ret = modules[i]->Start();
@@ -49,7 +53,7 @@ bool Application::Init()
 UpdateResult Application::Update()
 {
 	// Get frame time in ms
-	float startFrame = SDL_GetTicks();
+	uint startFrame = SDL_GetTicks();
 
 	UpdateResult ret = UpdateResult::UPDATE_CONTINUE;
 
@@ -63,9 +67,11 @@ UpdateResult Application::Update()
 		ret = modules[i]->PostUpdate();
 
 	// Get current frame time in ms
-	float currentFrameTime = SDL_GetTicks() - startFrame;
+	uint currentFrameTime = SDL_GetTicks() - startFrame;
 
-	// IF this frame is 
+	printf("%d\n", SDL_GetTicks());
+
+	// If this frame is 
 	if (currentFrameTime < frameTime)
 	{
 		SDL_Delay(frameTime -currentFrameTime);

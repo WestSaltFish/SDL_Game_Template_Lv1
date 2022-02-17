@@ -24,7 +24,7 @@ public:
 	float scale = 1.0f;
 	float speedRegardCamera = 1.0f;
 	// if want to draw this object
-	bool draw = true;
+	bool draw = false;
 
 	// Rect
 	SDL_Color color = { 0,0,0,0 };
@@ -91,8 +91,8 @@ public:
 		}
 	}
 
-	void InitAsTexture(SDL_Texture* texture, SDL_Rect destRect, SDL_Rect section, int layer, float orderInLayer,
-		SDL_RendererFlip flip, float rotation, float scale, float speedRegardCamera)
+	void InitAsTexture(SDL_Texture* texture, SDL_Rect destRect, SDL_Rect section = {0,0,0,0}, int layer = 0, float orderInLayer = 0.0f,
+		SDL_RendererFlip flip = SDL_FLIP_NONE, float rotation = 0.0f, float scale = 1.0f, float speedRegardCamera = 1.0f)
 	{
 		this->texture = texture;
 		this->section = section;

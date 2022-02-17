@@ -13,6 +13,9 @@ public:
 	virtual ~Module() { }
 
 	// Called at the beginning of the application execution
+	virtual bool Init();
+
+	// Called at the beginning of the application execution
 	virtual bool Start();
 
 	// Called at the beginning of each application loop

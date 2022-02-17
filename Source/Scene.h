@@ -21,6 +21,8 @@ public:
 
 	virtual void CleanUp();
 
+	void AddGameObject(GameObject* g);
+
 	void DestroyedGameObject(GameObject* g);
 
 	List<GameObject*> gameObjects;

@@ -5,6 +5,11 @@ Module::Module()
 
 }
 
+bool Module::Init()
+{
+	return true;
+}
+
 bool Module::Start()
 {
 	return true;

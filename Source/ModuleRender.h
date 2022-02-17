@@ -30,7 +30,7 @@ public:
 
 	// Called on application start.
 	// Creates the rendering context using the program's window.
-	bool Start() override;
+	bool Init() override;
 
 	// Called at the beginning of the application loop
 	// Clears the rendering context to a background color
