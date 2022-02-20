@@ -15,7 +15,7 @@ class ModuleScene : public Module
 {
 public:
 	Scene* scenes[NUM_SCENES] = { nullptr };
-	SceneName currentSceneIndex = SCENE_GAME;
+	SceneName currentSceneIndex = SCENE_MENU;
 public:
 	// Constructor
 	ModuleScene();
