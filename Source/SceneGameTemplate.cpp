@@ -2,6 +2,7 @@
 #include "PlayerTemplate.h"
 #include "Application.h"
 #include "ModuleTextures.h"
+#include "TestPowerUp.h"
 
 SceneGameTemplate::SceneGameTemplate()
 {
@@ -11,14 +12,26 @@ bool SceneGameTemplate::Start()
 {
 	// Declare and initialize every GameObject on the scene before calling SceneGame::Start()
 
-	new PlayerTemplate({ 20,20 });
+	new PlayerTemplate({ 5, 5});
 
-	//App->textures->Load("Assets/Images/DinoSprites-vita24x24.png");
-	//App->textures->Load("Assets/Images/DinoSprites-vita24x24.png");
-	//App->textures->Load("Assets/Images/DinoSprites-vita24x24.png");
-	//App->textures->Load("Assets/Images/DinoSprites-vita24x24.png");
+	#pragma region Create PoweUp
+
+	bool bad = true;
+
+	for (int i = 0; i < 10; i++)
+	{
+		int x = (rand() % 200) + 10;
+		int y = (rand() % 200) + 10;
+
+		new TestPowerUp({ x,y }, bad);
+
+		bad = false;
+	}
+
+	#pragma endregion
 
 	SceneGame::Start();
+
 	return true;
 }
 

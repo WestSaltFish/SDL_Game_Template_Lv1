@@ -1,5 +1,6 @@
 #include "Application.h"
 
+#include <time.h> 
 #include "Module.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
@@ -22,6 +23,9 @@ Application::Application()
 	modules[4] =	scene =			new ModuleScene();
 	modules[5] =	collisions =	new ModuleCollisions();
 	modules[6] =	render =		new ModuleRender();
+
+	// Init random seed;
+	srand(time(NULL));
 }
 
 Application::~Application()

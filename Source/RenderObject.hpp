@@ -15,28 +15,50 @@ enum RenderType
 class RenderObject
 {
 public:
-	// Global properties
-	std::string name = "renderObject";
-	SDL_Rect destRect = { 0,0,0,0 };
-	RenderType type;
-	int layer = 0;
-	float orderInLayer = 0.0f;
-	float scale = 1.0f;
-	float speedRegardCamera = 1.0f;
-	// if want to draw this object
-	bool draw = false;
 
-	// Rect
+	#pragma region Global Properties
+
+	std::string name = "renderObject";
+
+	SDL_Rect destRect = { 0,0,0,0 };
+
+	RenderType type;
+
+	int layer = 0;
+
+	float orderInLayer = 0.0f;
+
+	float scale = 1.0f;
+
+	float speedRegardCamera = 1.0f;
+
+	bool draw = false; // if want to draw this object
+
+	#pragma endregion
+
+	#pragma region Rect properties
+
 	SDL_Color color = { 0,0,0,0 };
+
 	bool filled = true;
 
-	// Texture
+	#pragma endregion
+
+	#pragma region Texture properties
+
 	SDL_Texture* texture = nullptr;
+
 	SDL_Rect section = { 0,0,0,0 };
+
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
+
 	float rotation = 0.0f;
+
 	int textureCenterX = 0;
+
 	int textureCenterY = 0;
+
+	#pragma endregion
 
 public:
 

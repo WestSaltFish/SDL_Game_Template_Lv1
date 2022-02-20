@@ -13,6 +13,8 @@ class GameObject
 public:
 	std::string name = "gameObject";
 
+	bool pendingToDelete = false;
+
 protected:
 	Collider* col = nullptr;
 
@@ -20,12 +22,10 @@ protected:
 
 	iPoint position = { 0,0 };
 
-	bool pendingToDelete = false;
-
 public:
 	GameObject(iPoint position = { 0,0 }, std::string name = "gameObject");
 
-	~GameObject();
+	virtual ~GameObject();
 
 	virtual void Start();
 

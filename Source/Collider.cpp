@@ -1,8 +1,9 @@
 #include "Collider.h"
 
-Collider::Collider(SDL_Rect rectangle, std::string tag, iPoint offset)
+Collider::Collider(SDL_Rect rectangle, GameObject* gameObject, std::string tag, iPoint offset)
 {
 	this->rect = rectangle;
+	this->gameObject = gameObject;
 	this->tag = tag;
 	this->offsetWithGameObject = offset;
 }

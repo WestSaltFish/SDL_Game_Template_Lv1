@@ -49,7 +49,6 @@ public:
 
 	ModuleRender* render = nullptr;
 
-private:
 	// Frame time in ms
 	uint frameTime = (1.0 / 60.0) * 1000;
 };

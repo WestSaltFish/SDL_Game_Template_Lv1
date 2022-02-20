@@ -8,6 +8,8 @@ GameObject::GameObject(iPoint position, std::string name)
 {
 	this->name = name;
 	this->position = position;
+
+	AddtoList();
 }
 
 GameObject::~GameObject()
@@ -36,7 +38,7 @@ void GameObject::Update()
 
 void GameObject::PostUpdate()
 {
-	// Dibujar texturas
+	// Draw textures
 	for (int i = 0; i < MAX_TEXTURES; i++)
 	{
 		if (renderObjects[i].texture != nullptr && renderObjects[i].draw)
@@ -45,10 +47,6 @@ void GameObject::PostUpdate()
 			renderObjects[i].destRect.y = position.y;
 
 			App->render->AddRenderObjectRenderQueue(renderObjects[i]);
-
-			/*App->render->AddTextureRenderQueue(renderObjects[i].texture, { renderObjects[i].destRect.x,renderObjects[i].destRect.y },
-				renderObjects[i].section, renderObjects[i].scale, renderObjects[i].layer, renderObjects[i].orderInLayer,
-				renderObjects[i].rotation, renderObjects[i].flip, renderObjects[i].speedRegardCamera);*/
 		}
 	}
 }
@@ -65,6 +63,9 @@ void GameObject::CleanUp()
 {
 }
 
+/// <summary>
+/// Add this gameobject to List of current Scene
+/// </summary>
 void GameObject::AddtoList()
 {
 	App->scene->scenes[App->scene->currentSceneIndex]->AddGameObject(this);

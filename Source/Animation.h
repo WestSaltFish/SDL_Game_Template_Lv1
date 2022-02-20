@@ -57,6 +57,11 @@ public:
 
 		return frames[actualFrame];
 	}
+
+	int GetTotalFrames()
+	{
+		return totalFrames;
+	}
 };
 
 #endif	// __ANIMATION_H__

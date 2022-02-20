@@ -2,7 +2,6 @@
 #define __MODULEINPUT_H__
 
 #include "Module.h"
-#include "Globals.h"
 
 #include "External/SDL/include/SDL_scancode.h"
 

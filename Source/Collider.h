@@ -13,7 +13,7 @@ struct Collider
 {
 public:
 	// Methods
-	Collider(SDL_Rect rectangle, std::string tag = "None", iPoint offset = { 0,0 });
+	Collider(SDL_Rect rectangle, GameObject* gameObject, std::string tag = "None", iPoint offset = { 0,0 });
 
 	void SetPos(int x, int y);
 
