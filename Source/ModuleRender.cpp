@@ -40,6 +40,9 @@ bool ModuleRender::Init()
 	// L10: DONE: Set render logical size
 	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+	// Active sorting
+	renderLayers[1].sort = true;
+
 	return ret;
 }
 

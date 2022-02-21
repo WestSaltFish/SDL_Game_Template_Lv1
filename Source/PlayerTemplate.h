@@ -10,7 +10,6 @@ enum class PlayerStates
 	IDLE = 0,
 	MOVE_LEFT,
 	MOVE_RIGHT,
-	HIT
 };
 
 // Player RenderLayers
@@ -37,6 +36,10 @@ public:
 
 	void CleanUp() override;
 
+	void OnCollisionEnter(GameObject* g) override;
+
+	void Die();
+
 public:
 	void Movement();
 
@@ -46,6 +49,7 @@ private:
 	Animation move;
 	Animation idle;
 	int speed = 2;
+	int powerCollected = 0;
 
 	// You have to put PlayerState:: to insist that it is a enum class
 	PlayerStates state = PlayerStates::IDLE;

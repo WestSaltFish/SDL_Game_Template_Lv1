@@ -1,11 +1,11 @@
 #ifndef __MODULERENDER_H__
 #define __MODULERENDER_H__
 
+#include <vector>
+
 #include "Module.h"
 #include "RenderObject.hpp"
-#include "External/SDL/include/SDL_Rect.h"
 #include "Point.h"
-#include <vector>
 
 #define MAX_LAYERS 4
 
@@ -15,7 +15,7 @@ struct SDL_Renderer;
 
 struct RenderLayer
 {
-	bool sort = false;
+	bool sort = true;
 	std::vector<RenderObject> renderObjects;
 };
 

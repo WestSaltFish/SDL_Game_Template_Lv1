@@ -49,6 +49,12 @@
     <Filter Include="Archivos de encabezado\Base Class">
       <UniqueIdentifier>{0e2c91af-6127-4092-86de-338fe0053e33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Particles">
+      <UniqueIdentifier>{990c2238-6eff-49bf-9fd7-6c505d948713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Particles">
+      <UniqueIdentifier>{ff29b53f-71a7-486a-a784-9ee8fa8123b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -109,6 +115,15 @@
       <Filter>Archivos de origen\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="MenuText.cpp">
+      <Filter>Archivos de origen\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Archivos de origen\Base Class</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDieParticle.cpp">
+      <Filter>Archivos de origen\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPowerUp.cpp">
       <Filter>Archivos de origen\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,6 +199,15 @@
     </ClInclude>
     <ClInclude Include="MenuText.h">
       <Filter>Archivos de encabezado\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Archivos de encabezado\Base Class</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDieParticle.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPowerUp.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

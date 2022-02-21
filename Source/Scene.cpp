@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "GameObject.h"
 
 Scene::Scene()
 {
@@ -27,7 +28,9 @@ void Scene::PreUpdate()
     {
         if (gameObjects[i] != nullptr)
         {
-            gameObjects[i]->PreUpdate();
+            if(gameObjects[i]->pendingToDelete)  DestroyedGameObject(gameObjects[i]);
+            
+            else gameObjects[i]->PreUpdate();
         }
     }
 }

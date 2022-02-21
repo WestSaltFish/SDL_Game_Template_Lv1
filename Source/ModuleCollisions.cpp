@@ -60,12 +60,12 @@ UpdateResult ModuleCollisions::PreUpdate()
 		for (int i = 0, count = c1->colliders.count() ; i < count; i++)
 		{
 			// If not coll
-			if(!c1->Intersects(c1->colliders[count]->rect))
+			if(!c1->Intersects(c1->colliders[i]->rect))
 			{
 				// Collision exit
-				c1->gameObject->OnCollisionExit(c1->colliders[count]->gameObject);
+				c1->gameObject->OnCollisionExit(c1->colliders[i]->gameObject);
 				// Remove in the collision list
-				c1->colliders.remove(c1->colliders.At(count));
+				c1->colliders.remove(c1->colliders.At(i));
 				break;
 			}
 		}
@@ -91,16 +91,20 @@ UpdateResult ModuleCollisions::PostUpdate()
 void ModuleCollisions::DebugDraw()
 {
 	Uint8 alpha = 80;
+
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if(colliders[i] == nullptr)
 			continue;
 
-		if(colliders[i]->tag == "None")
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha }); // white		
+		if (colliders[i]->tag == "None")
+			App->render->AddRectRenderQueue(colliders[i]->rect, 255, 255, 255, alpha, 2);// white		
+		else if(colliders[i]->tag == "Player")
+			App->render->AddRectRenderQueue(colliders[i]->rect, 0, 0, 255, alpha, 2); // blue
+		else if(colliders[i]->tag == "PowerUp")
+			App->render->AddRectRenderQueue(colliders[i]->rect, 0, 0, 0, alpha, 2);// green
 		else 
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });// blue
-
+			App->render->AddRectRenderQueue(colliders[i]->rect, 255, 0, 0, alpha, 2);// red
 		/*
 		switch(colliders[i]->tag)
 		{
@@ -144,20 +148,16 @@ bool ModuleCollisions::CleanUp()
 	return true;
 }
 
-Collider* ModuleCollisions::AddCollider(SDL_Rect rect)
+void ModuleCollisions::AddCollider(Collider* collider)
 {
-	Collider* ret = nullptr;
-
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] == nullptr)
+		if (colliders[i] == nullptr)
 		{
-			ret = colliders[i] = new Collider(rect);
+			colliders[i] = collider;
 			break;
 		}
 	}
-
-	return ret;
 }
 
 void ModuleCollisions::RemoveCollider(Collider* collider)
