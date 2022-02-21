@@ -14,7 +14,7 @@ struct ListItem
 	inline ListItem(const tdata& _data)
 	{
 		data = _data;
-		next = prev = NULL;
+		next = prev = 0;
 	}
 
 	~ListItem()
@@ -203,7 +203,7 @@ public:
 		ListItem<tdata>*   p_next = nullptr;
 		p_data = start;
 
-		while(p_data != NULL)
+		while(p_data != 0)
 		{
 			p_next = p_data->next;
 			RELEASE(p_data);

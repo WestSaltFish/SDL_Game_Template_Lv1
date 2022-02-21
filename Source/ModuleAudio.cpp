@@ -123,6 +123,12 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 
 uint ModuleAudio::LoadFx(const char* path)
 {
+	uint pathIindex = audioPaths.find(path);
+	if (audioPaths.find(path) != -1)
+	{
+		return pathIindex;
+	}
+
 	uint ret = 0;
 	Mix_Chunk* chunk = Mix_LoadWAV(path);
 
@@ -137,6 +143,7 @@ uint ModuleAudio::LoadFx(const char* path)
 			if (soundFx[ret] == nullptr)
 			{
 				soundFx[ret] = chunk;
+				audioPaths.add(path);
 				break;
 			}
 		}

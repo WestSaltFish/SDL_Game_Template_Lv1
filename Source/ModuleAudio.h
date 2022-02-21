@@ -2,6 +2,8 @@
 #define __MODULEAUDIO_H__
 
 #include "Module.h"
+#include "List.h"
+#include <string>
 
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
 #define MAX_FX 200
@@ -50,6 +52,8 @@ private:
 	// An array of all the loaded sound effects
 	// Allows us to keep track of all sound fx and handle them through indices
 	Mix_Chunk* soundFx[MAX_FX] = { nullptr };
+
+	List<std::string> audioPaths;
 };
 
 #endif // __MODULEAUDIO_H__
