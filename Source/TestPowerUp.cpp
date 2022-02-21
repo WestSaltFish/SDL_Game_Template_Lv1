@@ -24,7 +24,5 @@ TestPowerUp::TestPowerUp(iPoint pos, bool bad):GameObject(pos,"powerUp")
 
 	col = new Collider({ pos.x,pos.y, 8,8 }, this, "PowerUp");
 
-	App->collisions->AddCollider(col);
-
 	#pragma endregion
 }

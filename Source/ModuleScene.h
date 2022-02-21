@@ -11,10 +11,18 @@ enum SceneName
 	NUM_SCENES
 };
 
+enum class SCENECHANGESTATES
+{
+	idle,
+	fade_in,
+	fade_out
+};
+
 class ModuleScene : public Module
 {
 public:
 	Scene* scenes[NUM_SCENES] = { nullptr };
+
 	SceneName currentSceneIndex = SCENE_MENU;
 public:
 	// Constructor
@@ -38,7 +46,26 @@ public:
 	// Called on application exit.
 	bool CleanUp() override;
 
-	void ChangeScene(SceneName targetScene);
+	bool StartChangeScene();
+
+	void ChangeCurrentSceneRequest(uint index, float changeSpeed = 4.0f);
+
+private:
+	void ChangeSceneSteptoStep();
+
+private:
+
+	float fade = 0;
+
+	float fadeSpeed = 2.0f;
+
+	SCENECHANGESTATES changeState = SCENECHANGESTATES::idle;
+
+	bool changeSceneRequest = false;
+
+	bool isChangingScene = false;
+
+	int changeTo = -1;
 };
 
 #endif // !__MODULESCENE_H__

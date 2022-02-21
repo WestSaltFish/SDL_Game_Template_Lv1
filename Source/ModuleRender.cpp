@@ -105,6 +105,8 @@ bool ModuleRender::CleanUp()
 {
 	LOG("Destroying renderer");
 
+	ClearRederQueue();
+
 	// Destroy the rendering context
 	if (renderer != nullptr) SDL_DestroyRenderer(renderer);
 

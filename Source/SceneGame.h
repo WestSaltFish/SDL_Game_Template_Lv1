@@ -22,6 +22,5 @@ public:
 
 	void CleanUp() override;
 
-
 };
 #endif

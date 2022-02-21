@@ -1,4 +1,6 @@
 #include "Collider.h"
+#include "Application.h"
+#include "ModuleCollisions.h"
 
 Collider::Collider(SDL_Rect rectangle, GameObject* gameObject, std::string tag, iPoint offset)
 {
@@ -6,6 +8,7 @@ Collider::Collider(SDL_Rect rectangle, GameObject* gameObject, std::string tag, 
 	this->gameObject = gameObject;
 	this->tag = tag;
 	this->offsetWithGameObject = offset;
+	App->collisions->AddCollider(this);
 }
 
 void Collider::SetPos(int x, int y)

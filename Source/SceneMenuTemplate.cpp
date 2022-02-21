@@ -12,7 +12,6 @@ SceneMenuTemplate::SceneMenuTemplate()
 bool SceneMenuTemplate::Start()
 {
 	// Declare and initialize every GameObject on the scene before calling SceneGame::Start()
-
 	SceneMenu::Start();
 
 	// Not a GameObject, it's position is fixed and it does not require a Collider
@@ -54,7 +53,6 @@ void SceneMenuTemplate::PostUpdate()
 
 void SceneMenuTemplate::CleanUp()
 {
-	delete text;
-	text = nullptr;
+	RELEASE(text);
 	SceneMenu::CleanUp();
 }

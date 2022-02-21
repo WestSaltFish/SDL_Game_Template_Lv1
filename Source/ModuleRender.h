@@ -84,10 +84,10 @@ public:
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
 
+	int uiLayer = MAX_LAYERS - 1;
+
 private:
 	std::vector<RenderLayer> renderLayers;
-
-	int uiLayer = MAX_LAYERS;
 };
 
 #endif //__MODULERENDER_H__

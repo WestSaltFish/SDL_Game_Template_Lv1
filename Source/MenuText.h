@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __MENU_TEXT_H__
+#define __MENU_TEXT_H__
 
 struct SDL_Texture;
 
@@ -15,3 +16,4 @@ private:
 	SDL_Texture* optionsTexture = nullptr;
 };
 
+#endif // !__MENU_TEXT_H__

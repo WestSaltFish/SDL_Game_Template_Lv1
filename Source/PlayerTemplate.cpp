@@ -42,9 +42,7 @@ PlayerTemplate::PlayerTemplate(iPoint pos, std::string name) :GameObject(pos, na
 
 	#pragma region Init Collision
 
-	col = new Collider({ pos.x,pos.y, 18,24 }, this, "Player", { 3,0 });
-
-	App->collisions->AddCollider(col);
+	col = new Collider({ pos.x,pos.y, 18,24 }, this, "Player", { 3, 0});
 
 	#pragma endregion
 }
