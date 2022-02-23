@@ -12,7 +12,10 @@ public:
 
 	bool bad = false;
 
-	int* powerUps;
+	int* powerUps = nullptr;
+
+private:
+	uint pickUpSFX;
 };
 
 #endif // !__POWER_UP_H__

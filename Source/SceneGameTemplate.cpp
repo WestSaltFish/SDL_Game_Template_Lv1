@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleScene.h"
+#include "ModuleAudio.h"
 
 SceneGameTemplate::SceneGameTemplate()
 {
@@ -39,11 +40,14 @@ bool SceneGameTemplate::Start()
 
 	#pragma endregion
 
-	#pragma region Init win lose textures
+	#pragma region Init win lose textures and audio
 
 	winTex = App->textures->Load("Assets/Images/win.png");
 
 	loseTex = App->textures->Load("Assets/Images/lose.png");
+
+	winSFX = App->audio->LoadFx("Assets/Audio/win.wav");
+	loseSFX = App->audio->LoadFx("Assets/Audio/lose.wav");
 
 	#pragma endregion
 
@@ -54,17 +58,19 @@ bool SceneGameTemplate::Start()
 
 void SceneGameTemplate::PreUpdate()
 {
-	if (player && player->pendingToDelete)
+	if (player && player->pendingToDelete && gameState != 2)
 	{
 		player = nullptr;
 		gameState = 2;
+		App->audio->PlayFx(loseSFX);
 	}
 
 	SceneGame::PreUpdate();
 
-	if (powerUps <= 1)
+	if (powerUps <= 1 && gameState != 1)
 	{
 		gameState = 1;
+		App->audio->PlayFx(winSFX);
 	}
 }
 

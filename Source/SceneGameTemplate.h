@@ -32,5 +32,7 @@ private:
 	int powerUps = 10;
 
 	int gameState = 0; // 0 = inGame, 1 = win, 2 = lose
+
+	uint winSFX, loseSFX;
 };
 #endif

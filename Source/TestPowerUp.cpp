@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleCollisions.h"
+#include "ModuleAudio.h"
 
 TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"powerUp")
 {
@@ -22,6 +23,9 @@ TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"po
 
 	#pragma endregion
 
+	// Init Audio
+	pickUpSFX = App->audio->LoadFx("Assets/Audio/pickup.wav");
+
 	#pragma region Init Collision
 
 	col = new Collider({ pos.x,pos.y, 8,8 }, this, "PowerUp");
@@ -35,6 +39,7 @@ void TestPowerUp::OnCollisionEnter(GameObject* obj)
 	if (obj->name == "player" && !bad)
 	{
 		pendingToDelete = true;
+		App->audio->PlayFx(pickUpSFX);
 		(*powerUps)--;
 	}
 }
