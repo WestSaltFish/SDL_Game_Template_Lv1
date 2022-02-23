@@ -22,7 +22,7 @@ enum class PlayerRenderLayer
 class PlayerTemplate : public GameObject
 {
 public:	
-	PlayerTemplate(iPoint pos = { 0,0 }, std::string name = "Player");
+	PlayerTemplate(iPoint pos = { 0,0 }, std::string name = "player");
 
 	~PlayerTemplate();
 
@@ -53,6 +53,9 @@ private:
 
 	// You have to put PlayerState:: to insist that it is a enum class
 	PlayerStates state = PlayerStates::IDLE;
+
+public:
+	bool moveBlock = false;
 };
 
 #endif // !__PLAYER_TEMPLATE_H__

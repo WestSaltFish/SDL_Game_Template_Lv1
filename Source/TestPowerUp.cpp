@@ -3,9 +3,11 @@
 #include "ModuleTextures.h"
 #include "ModuleCollisions.h"
 
-TestPowerUp::TestPowerUp(iPoint pos, bool bad):GameObject(pos,"powerUp")
+TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"powerUp")
 {
 	this->bad = bad;
+
+	this->powerUps = powerUps;
 	
 	#pragma region Init RenderObject
 
@@ -25,4 +27,14 @@ TestPowerUp::TestPowerUp(iPoint pos, bool bad):GameObject(pos,"powerUp")
 	col = new Collider({ pos.x,pos.y, 8,8 }, this, "PowerUp");
 
 	#pragma endregion
+}
+
+void TestPowerUp::OnCollisionEnter(GameObject* obj)
+{
+	// If we coll with player, and we aren't bad PowerUp, we die. Then scene powerUps--
+	if (obj->name == "player" && !bad)
+	{
+		pendingToDelete = true;
+		(*powerUps)--;
+	}
 }

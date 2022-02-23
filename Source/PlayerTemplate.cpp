@@ -69,6 +69,7 @@ void PlayerTemplate::Update()
 		Die();
 	}
 
+	if(!moveBlock)
 	Movement();
 
 	GameObject::Update();
@@ -95,12 +96,6 @@ void PlayerTemplate::OnCollisionEnter(GameObject* g)
 		if (t->bad)
 		{
 			Die();
-		}
-		else
-		{
-			// Destroyed this powerUp
-			t->pendingToDelete = true;
-			powerCollected++;
 		}
 	}
 }
