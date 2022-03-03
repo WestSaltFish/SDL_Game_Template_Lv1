@@ -6,6 +6,7 @@
 struct SDL_Texture;
 class MenuText;
 
+// Test class, should be removed at the start of the project
 class SceneMenuTemplate : public SceneMenu
 {
 public:

@@ -21,11 +21,15 @@ bool SceneGameTemplate::Start()
 	powerUps = 10;
 
 	// Declare and initialize every GameObject on the scene before calling SceneGame::Start()
-
+	// To create a class inherited to the GameObject, you only need to make new,
+	// It will take care of managing Start, Updates and even delete.
+	// If you want to have a reference to this GameObject, you can store it in a pointer
 	player = new PlayerTemplate({ 5, 5});
 
-	#pragma region Create PoweUp
+	// If you not, you can create it directly and forget about it.
+	#pragma region Create PowerUps
 
+	// The first PowerUp will be bad, and it will kill the player on a collision
 	bool bad = true;
 
 	for (int i = 0; i < powerUps ; i++)
@@ -47,6 +51,7 @@ bool SceneGameTemplate::Start()
 	loseTex = App->textures->Load("Assets/Images/lose.png");
 
 	winSFX = App->audio->LoadFx("Assets/Audio/win.wav");
+
 	loseSFX = App->audio->LoadFx("Assets/Audio/lose.wav");
 
 	#pragma endregion
@@ -65,13 +70,13 @@ void SceneGameTemplate::PreUpdate()
 		App->audio->PlayFx(loseSFX);
 	}
 
-	SceneGame::PreUpdate();
-
 	if (powerUps <= 1 && gameState != 1)
 	{
 		gameState = 1;
 		App->audio->PlayFx(winSFX);
 	}
+
+	SceneGame::PreUpdate();
 }
 
 void SceneGameTemplate::Update()
@@ -90,13 +95,13 @@ void SceneGameTemplate::PostUpdate()
 	// 0 = inGame, 1 = win, 2 = lose
 	if (gameState == 1)
 	{
-		App->render->AddTextureRenderQueue(winTex, { 0,0 }, { 0,0,0,0 }, 1, App->render->uiLayer);
+		App->render->AddTextureRenderQueue(winTex, { 0,0 }, { 0,0,0,0 }, 1, -1);
 
 		player->moveBlock = true;
 	}
 	else if (gameState == 2)
 	{
-		App->render->AddTextureRenderQueue(loseTex, { 0,0 }, { 0,0,0,0 }, 1, App->render->uiLayer);
+		App->render->AddTextureRenderQueue(loseTex, { 0,0 }, { 0,0,0,0 }, 1, App->render->topLayer);
 	}
 
 	SceneGame::PostUpdate();

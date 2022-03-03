@@ -7,6 +7,7 @@
 #include "RenderObject.hpp"
 #include "Point.h"
 
+// Must have more than 3
 #define MAX_LAYERS 4
 
 struct SDL_Color;
@@ -15,7 +16,8 @@ struct SDL_Renderer;
 
 struct RenderLayer
 {
-	bool sort = true;
+	// IMPORTANT: if you activate it, it will start sorting from this layer
+	bool sort = false;
 	std::vector<RenderObject> renderObjects;
 };
 
@@ -49,30 +51,46 @@ public:
 	// Destroys the rendering context
 	bool CleanUp() override;
 
+	/// <summary>
+	/// Add a specific texture in the render queue
+	/// </summary>
+	/// <param name="texture">: texture you want to draw</param>
+	/// <param name="pos">: renderObject position in the screen</param>
+	/// <param name="section">: the section you want to capture in this texture, if you want the whole image enter {0,0,0,0}</param>
+	/// <param name="scale">: scale of renderObject in screen</param>
+	/// <param name="layer">: layer of renderObject, must be positive</param>
+	/// <param name="orderInlayer">: order of renderObject in his layer</param>
+	/// <param name="rotation">: renderObject rotation</param>
+	/// <param name="flip">: if you want to flip the image, use SDL_FLIP_HORIZONAL or SDL_FLIP_VERTICAL</param>
+	/// <param name="speed">: relative speed between renderObject and camera, 0 = stays fixed on the screen, 1 = synchronizes camera movement 100%/param>
 	void AddTextureRenderQueue(SDL_Texture* texture, iPoint pos, SDL_Rect section = { 0,0,0,0 },
-		float scale = 1, int layer = 0, float orderInlayer = 0.0f, float rotation = 0, 
+		float scale = 1, uint layer = 0, float orderInlayer = 0.0f, float rotation = 0, 
 		SDL_RendererFlip flip = SDL_FLIP_NONE, float speed = 1.0f);
 
+	/// <summary>
+	/// Add a specific rect in the render queue
+	/// </summary>
+	/// <param name="rect">: the rect you want to draw</param>
+	/// <param name="r">: color.r</param>
+	/// <param name="g">: color.r</param>
+	/// <param name="b">: color.b</param>
+	/// <param name="a">: color.a</param>
+	/// <param name="layer">: layer of renderObject, must be positive</param>
+	/// <param name="orderInlayer">: order of renderObject in his layer</param>
+	/// <param name="filled">: determine whether the rect is to be filled or not</param>
+	/// <param name="speed">: relative speed between renderObject and camera, 0 = stays fixed on the screen, 1 = synchronizes camera movement 100%</param>
 	void AddRectRenderQueue(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255,
-		int layer = 1, float orderInlayer = 0.0f, bool filled = true, float speed = 1.0f);
+		uint layer = 1, float orderInlayer = 0.0f, bool filled = true, float speed = 1.0f);
 
 	void AddRenderObjectRenderQueue(RenderObject renderObject);
 
+	/// <summary>
+	/// Sort the layer that has passed
+	/// </summary>
+	/// <param name="layer"></param>
 	void SortingObjectsInLayer(std::vector<RenderObject>& layer);
 
 	void ClearRederQueue();
-
-	#pragma region OBSOLETE NOT USE!!!!!
-	// Draws a texture to the screen
-	// Param texture	- A valid SDL Texture, validation checks are not performed
-	// Param x, y		- Position x,y in the screen (upper left axis)
-	// Param section	- The portion of the texture we want to copy. nullptr for the entire texture
-	// Param speed		- The amount of effect that is applied to the sprite depending on the camera
-	bool DrawTexture(SDL_Texture* texture, int x, int y, SDL_Rect* section = nullptr, float speed = 1.0f, bool useCamera = true);
-
-	bool DrawRectangle(const SDL_Rect& rect, SDL_Color color, float speed = 1.0f, bool useCamera = true);
-	#pragma endregion
-
 public:
 	// Rendering context used for any rendering action
 	SDL_Renderer* renderer = nullptr;
@@ -84,7 +102,8 @@ public:
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
 
-	int uiLayer = MAX_LAYERS - 1;
+	// The top layer
+	int topLayer = MAX_LAYERS - 1;
 
 private:
 	std::vector<RenderLayer> renderLayers;

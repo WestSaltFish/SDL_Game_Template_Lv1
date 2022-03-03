@@ -43,7 +43,7 @@ UpdateResult ModuleScene::PostUpdate()
 
     if (isChangingScene)
     {
-        if (fade != 0) App->render->AddRectRenderQueue(SDL_Rect{ 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }, 0, 0, 0, fade, App->render->uiLayer, 200);
+        if (fade != 0) App->render->AddRectRenderQueue(SDL_Rect{ 0,0,SCREEN_WIDTH,SCREEN_HEIGHT }, 0, 0, 0, fade, App->render->topLayer, 200);
        
         StartChangeScene();
     } 

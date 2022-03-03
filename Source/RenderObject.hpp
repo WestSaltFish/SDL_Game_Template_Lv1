@@ -24,7 +24,7 @@ public:
 
 	RenderType type;
 
-	int layer = 0;
+	uint layer = 0;
 
 	float orderInLayer = 0.0f;
 
@@ -113,7 +113,7 @@ public:
 		}
 	}
 
-	void InitAsTexture(SDL_Texture* texture, SDL_Rect destRect, SDL_Rect section = {0,0,0,0}, int layer = 0, float orderInLayer = 0.0f,
+	void InitAsTexture(SDL_Texture* texture, SDL_Rect destRect, SDL_Rect section = {0,0,0,0}, uint layer = 0, float orderInLayer = 0.0f,
 		SDL_RendererFlip flip = SDL_FLIP_NONE, float rotation = 0.0f, float scale = 1.0f, float speedRegardCamera = 1.0f)
 	{
 		this->texture = texture;
@@ -129,7 +129,7 @@ public:
 		this->draw = true;
 	}
 
-	void InitAsRect(SDL_Rect destRect, SDL_Color color = { 0,0,0,255 }, bool filled = false, int layer = 0, float orderInLayer = 0.0f,
+	void InitAsRect(SDL_Rect destRect, SDL_Color color = { 0,0,0,255 }, bool filled = false, int ulayer = 0, float orderInLayer = 0.0f,
 		float speedRegardCamera = 1.0f)
 	{
 		this->color = color;

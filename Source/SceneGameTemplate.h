@@ -5,6 +5,8 @@
 
 class PlayerTemplate;
 
+
+// Test class, should be removed at the start of the project
 class SceneGameTemplate : public SceneGame
 {
 public:
