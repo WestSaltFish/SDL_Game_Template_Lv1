@@ -4,7 +4,7 @@
 #include "Point.h"
 #include "RenderObject.hpp"
 
-#define MAX_TEXTURES 2
+#define MAX_RENDEROBJECT 2
 
 class Collider;
 
@@ -18,7 +18,7 @@ public:
 protected:
 	Collider* col = nullptr;
 
-	RenderObject renderObjects[MAX_TEXTURES];
+	RenderObject renderObjects[MAX_RENDEROBJECT];
 
 	iPoint position = { 0,0 };
 

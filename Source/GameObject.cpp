@@ -39,7 +39,7 @@ void GameObject::Update()
 void GameObject::PostUpdate()
 {
 	// Draw textures
-	for (int i = 0; i < MAX_TEXTURES; i++)
+	for (int i = 0; i < MAX_RENDEROBJECT; i++)
 	{
 		if (renderObjects[i].texture != nullptr && renderObjects[i].draw)
 		{
