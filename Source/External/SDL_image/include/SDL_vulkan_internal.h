@@ -21,7 +21,7 @@
 #ifndef SDL_vulkan_internal_h_
 #define SDL_vulkan_internal_h_
 
-#include "SDL/include/SDL_internal.h"
+#include "SDL_internal.h"
 
 #include "SDL_stdinc.h"
 

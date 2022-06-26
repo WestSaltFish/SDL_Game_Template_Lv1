@@ -2,6 +2,7 @@
 #define __SCENE_GAME_TEMPLATE_H__
 
 #include "SceneGame.h"
+#include "SDL_ttf.h"
 
 class PlayerTemplate;
 
@@ -36,5 +37,8 @@ private:
 	int gameState = 0; // 0 = inGame, 1 = win, 2 = lose
 
 	uint winSFX, loseSFX;
+
+	TTF_Font* font = nullptr;
+
 };
 #endif

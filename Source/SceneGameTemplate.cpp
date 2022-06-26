@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleScene.h"
 #include "ModuleAudio.h"
+#include "SDL_ttf.h"
 
 SceneGameTemplate::SceneGameTemplate()
 {
@@ -14,6 +15,8 @@ SceneGameTemplate::SceneGameTemplate()
 
 bool SceneGameTemplate::Start()
 {
+	TTF_Init();
+
 	// IMPORTANT: Init the parameters of this scene
 	// because when we restart the scene, these values should be set by default
 	gameState = 0;
@@ -109,5 +112,6 @@ void SceneGameTemplate::PostUpdate()
 
 void SceneGameTemplate::CleanUp()
 {
+	TTF_Quit();
 	SceneGame::CleanUp();
 }

@@ -18,17 +18,17 @@
      misrepresented as being the original software.
   3. This notice may not be removed or altered from any source distribution.
 */
-#include "SDL/include/SDL_internal.h"
+#include "SDL_internal.h"
 
 #ifndef SDL_sysvideo_h_
 #define SDL_sysvideo_h_
 
-#include "SDL/include/SDL_messagebox.h"
-#include "SDL/include/SDL_shape.h"
-#include "SDL/include/SDL_thread.h"
-#include "SDL/include/SDL_metal.h"
+#include "SDL_messagebox.h"
+#include "SDL_shape.h"
+#include "SDL_thread.h"
+#include "SDL_metal.h"
 
-#include "SDL_image/include/SDL_vulkan_internal.h"
+#include "SDL_vulkan_internal.h"
 
 /* The SDL video driver */
 
