@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "External/SDL/include/SDL.h"
+#include "SDL.h"
 #include "Globals.h"
 
 enum RenderType

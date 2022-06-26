@@ -7,7 +7,7 @@
 #include "GameObject.h"
 #include "Collider.h"
 
-#include "External/SDL/include/SDL_Scancode.h"
+#include "SDL_Scancode.h"
 
 ModuleCollisions::ModuleCollisions() : Module()
 {

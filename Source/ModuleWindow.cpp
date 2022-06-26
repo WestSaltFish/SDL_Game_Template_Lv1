@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "Globals.h"
 
-#include "External/SDL/include/SDL.h"
+#include "SDL.h"
 
 
 ModuleWindow::ModuleWindow() : Module()

@@ -2,7 +2,7 @@
 #define __COLLIDER_H__
 
 #include <string>
-#include "External/SDL/include/SDL_Rect.h"
+#include "SDL_Rect.h"
 #include "List.h"
 #include "Point.h"
 

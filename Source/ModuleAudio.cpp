@@ -2,8 +2,8 @@
 
 #include "Application.h"
 
-#include "External/SDL/include/SDL.h"
-#include "External/SDL_mixer/include/SDL_mixer.h"
+#include "SDL.h"
+#include "SDL_mixer.h"
 
 //#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 

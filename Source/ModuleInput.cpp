@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include "Application.h"
 
-#include "External/SDL/include/SDL.h"
+#include "SDL.h"
 
 #include <string.h>
 
