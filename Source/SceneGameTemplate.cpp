@@ -7,7 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleScene.h"
 #include "ModuleAudio.h"
-#include "SDL_ttf.h"
+
 
 SceneGameTemplate::SceneGameTemplate()
 {
@@ -16,6 +16,14 @@ SceneGameTemplate::SceneGameTemplate()
 bool SceneGameTemplate::Start()
 {
 	TTF_Init();
+
+	font = TTF_OpenFont("Assets/Fonts/advanced_pixel.ttf", 32);
+
+	SDL_Surface* s = TTF_RenderText_Solid(font, "Hello world", { 255,0,0,255 });
+
+	textTexture = SDL_CreateTextureFromSurface(App->render->renderer, s);
+
+	s = nullptr;
 
 	// IMPORTANT: Init the parameters of this scene
 	// because when we restart the scene, these values should be set by default
@@ -107,11 +115,15 @@ void SceneGameTemplate::PostUpdate()
 		App->render->AddTextureRenderQueue(loseTex, { 0,0 }, { 0,0,0,0 }, 1, App->render->topLayer);
 	}
 
+	App->render->AddTextureRenderQueue(textTexture, { 10,10 }, { 0,0,0,0 }, 2.0f, 4);
+
 	SceneGame::PostUpdate();
 }
 
 void SceneGameTemplate::CleanUp()
 {
+	SDL_DestroyTexture(textTexture);
+
 	TTF_Quit();
 	SceneGame::CleanUp();
 }

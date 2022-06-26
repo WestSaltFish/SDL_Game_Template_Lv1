@@ -40,5 +40,7 @@ private:
 
 	TTF_Font* font = nullptr;
 
+	SDL_Texture* textTexture = nullptr;
+
 };
 #endif

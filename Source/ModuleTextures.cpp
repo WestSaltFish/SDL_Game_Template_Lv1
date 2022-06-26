@@ -41,11 +41,11 @@ bool ModuleTextures::CleanUp()
 	// Free all textures sill existing in the textures array
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
 	{
-		if (textures[i] != nullptr)
+		/*if (textures[i] != nullptr)
 		{
 			SDL_DestroyTexture(textures[i]);
 			textures[i] = nullptr;
-		}
+		}*/
 	}
 
 	// Quit SDL_Image subsystems
@@ -96,7 +96,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 			}
 		}
 
-		SDL_FreeSurface(surface);
+		//SDL_FreeSurface(surface);
 	}
 
 	return texture;
