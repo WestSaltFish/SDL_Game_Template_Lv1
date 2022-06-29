@@ -126,6 +126,12 @@
     <ClCompile Include="TestPowerUp.cpp">
       <Filter>Archivos de origen\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Archivos de origen\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Archivos de origen\Base Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
@@ -208,6 +214,12 @@
     </ClInclude>
     <ClInclude Include="TestPowerUp.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Archivos de encabezado\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Archivos de encabezado\Base Class</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 #include "SDL_ttf.h"
 
 class PlayerTemplate;
-
+class Text;
 
 // Test class, should be removed at the start of the project
 class SceneGameTemplate : public SceneGame
@@ -41,6 +41,8 @@ private:
 	TTF_Font* font = nullptr;
 
 	SDL_Texture* textTexture = nullptr;
+
+	Text* testText = nullptr;
 
 };
 #endif

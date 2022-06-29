@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleScene.h"
 #include "ModuleAudio.h"
+#include "Text.h"
 
 
 SceneGameTemplate::SceneGameTemplate()
@@ -15,15 +16,7 @@ SceneGameTemplate::SceneGameTemplate()
 
 bool SceneGameTemplate::Start()
 {
-	TTF_Init();
-
-	font = TTF_OpenFont("Assets/Fonts/advanced_pixel.ttf", 32);
-
-	SDL_Surface* s = TTF_RenderText_Solid(font, "Hello world", { 255,0,0,255 });
-
-	textTexture = SDL_CreateTextureFromSurface(App->render->renderer, s);
-
-	s = nullptr;
+	testText = new Text({ 10,10 }, "Advanced Pixel");
 
 	// IMPORTANT: Init the parameters of this scene
 	// because when we restart the scene, these values should be set by default
@@ -85,6 +78,14 @@ void SceneGameTemplate::PreUpdate()
 	{
 		gameState = 1;
 		App->audio->PlayFx(winSFX);
+	}
+
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_DOWN)
+	{
+		testText->ChangeColor({ 0,255,0,255 });
+		testText->ChangeFont(FontsEnum::OLD_LONDON);
+		testText->ChangeText("Old London");
+		testText->ChangeScale(2.5f);
 	}
 
 	SceneGame::PreUpdate();

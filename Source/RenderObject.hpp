@@ -32,7 +32,7 @@ public:
 
 	float speedRegardCamera = 1.0f;
 
-	bool draw = false; // if want to draw this object
+	bool draw = true; // if want to draw this object
 
 	#pragma endregion
 
@@ -82,6 +82,8 @@ public:
 
 	void DrawTexture(SDL_Renderer* renderer)
 	{
+		if (texture == nullptr) return;
+
 		if (section.w == 0 || section.h == 0)
 		{
 			if (SDL_RenderCopyEx(renderer, texture, nullptr, &destRect, rotation, NULL, flip) != 0)

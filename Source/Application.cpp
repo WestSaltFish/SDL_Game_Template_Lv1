@@ -9,6 +9,7 @@
 #include "ModuleScene.h"
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
@@ -22,7 +23,8 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio();
 	modules[4] =	scene =			new ModuleScene();
 	modules[5] =	collisions =	new ModuleCollisions();
-	modules[6] =	render =		new ModuleRender();
+	modules[6] =	fonts =			new ModuleFonts();
+	modules[7] =	render =		new ModuleRender();
 
 	// Init random seed;
 	srand(time(NULL));
