@@ -16,7 +16,7 @@ SceneGameTemplate::SceneGameTemplate()
 
 bool SceneGameTemplate::Start()
 {
-	//testText = new Text({ 10,10 }, "Advanced Pixel");
+	testText = new Text({ 10,10 }, "Advanced Pixel");
 
 	// IMPORTANT: Init the parameters of this scene
 	// because when we restart the scene, these values should be set by default
@@ -80,26 +80,18 @@ void SceneGameTemplate::PreUpdate()
 		App->audio->PlayFx(winSFX);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_1] == KEY_DOWN)
-	{
-		testText->ChangeColor({ 0,255,0,255 });
-		testText->ChangeFont(FontsEnum::OLD_LONDON);
-		testText->ChangeText("Old London");
-		testText->ChangeScale(2.5f);
-	}
-
 	SceneGame::PreUpdate();
 }
 
 void SceneGameTemplate::Update()
 {
-	SceneGame::Update();
-
 	// If we're win or lose
 	if (gameState > 0)
 	{
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN) App->scene->ChangeCurrentSceneRequest(0);
 	}
+
+	SceneGame::Update();
 }
 
 void SceneGameTemplate::PostUpdate()
@@ -125,6 +117,5 @@ void SceneGameTemplate::CleanUp()
 {
 	SDL_DestroyTexture(textTexture);
 
-	TTF_Quit();
 	SceneGame::CleanUp();
 }

@@ -8,16 +8,24 @@ bool ModuleFonts::Start()
 {  
     TTF_Init();
 
+    // Default font
     TTF_Font* advancedPixelFont = TTF_OpenFont("Assets/Fonts/advanced_pixel.ttf", 32);
-    if (!advancedPixelFont) {
+
+    if (!advancedPixelFont) 
+    {
         printf("TTF_OpenFont: %s\n", TTF_GetError());
     }
+
     fonts.push_back(advancedPixelFont);
 
+    // Default font 2
     TTF_Font* oldLondonFont = TTF_OpenFont("Assets/Fonts/old_london.ttf", 32);
-    if (!oldLondonFont) {
+
+    if (!oldLondonFont) 
+    {
         printf("TTF_OpenFont: %s\n", TTF_GetError());
     }
+
     fonts.push_back(oldLondonFont);
 
     return true;

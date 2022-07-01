@@ -32,16 +32,11 @@ void GameObject::PreUpdate()
 void GameObject::Update()
 {
 	// Update collision position with this.position
-	if (col != nullptr)
-	col->SetPos(position.x, position.y);
+	if (col != nullptr) col->SetPos(position.x, position.y);
 }
 
 void GameObject::PostUpdate()
 {
-	if (this->name == "Text")
-	{
-		printf("a");
-	}
 	// Draw textures
 	for (int i = 0; i < MAX_RENDEROBJECT; i++)
 	{

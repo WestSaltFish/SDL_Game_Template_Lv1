@@ -44,13 +44,18 @@ public:
 	UpdateResult PostUpdate() override;
 
 	// Called on application exit.
-	bool CleanUp() override;
+	bool CleanUp() override;	
 
-	bool StartChangeScene();
-
+	/// <summary>
+	/// Call for change scene, it won't work if you are changing the scene
+	/// </summary>
+	/// <param name="index"> target scene index </param>
+	/// <param name="changeSpeed"> speed to fade in/out effect </param>
 	void ChangeCurrentSceneRequest(uint index, float changeSpeed = 4.0f);
 
 private:
+	bool StartChangeScene();
+
 	void ChangeSceneSteptoStep();
 
 private:

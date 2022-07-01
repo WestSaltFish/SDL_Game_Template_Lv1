@@ -7,12 +7,10 @@
 #include "GameObject.h"
 #include "Collider.h"
 
-#include "SDL_Scancode.h"
 
 ModuleCollisions::ModuleCollisions() : Module()
 {
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
-		colliders[i] = nullptr;
+	for(uint i = 0; i < MAX_COLLIDERS; ++i) colliders[i] = nullptr;
 }
 
 // Destructor
@@ -23,14 +21,13 @@ ModuleCollisions::~ModuleCollisions()
 
 UpdateResult ModuleCollisions::PreUpdate()
 {
-	Collider* c1;
-	Collider* c2;
+	Collider* c1 = nullptr;
+	Collider* c2 = nullptr;
 
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		// Skip empty colliders
-		if(colliders[i] == nullptr)
-			continue;
+		if(colliders[i] == nullptr) continue;
 
 		c1 = colliders[i];
 
@@ -90,44 +87,17 @@ UpdateResult ModuleCollisions::PostUpdate()
 
 void ModuleCollisions::DebugDraw()
 {
-	Uint8 alpha = 80;
-
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] == nullptr)
-			continue;
+		if(colliders[i] == nullptr) continue;
 
-		if (colliders[i]->tag == "None")
-			App->render->AddRectRenderQueue(colliders[i]->rect, 255, 255, 255, alpha, 2);// white		
-		else if(colliders[i]->tag == "Player")
-			App->render->AddRectRenderQueue(colliders[i]->rect, 0, 0, 255, alpha, 2); // blue
-		else if(colliders[i]->tag == "PowerUp")
-			App->render->AddRectRenderQueue(colliders[i]->rect, 0, 0, 0, alpha, 2);// green
-		else 
-			App->render->AddRectRenderQueue(colliders[i]->rect, 255, 0, 0, alpha, 2);// red
-		/*
-		switch(colliders[i]->tag)
-		{
-			case Collider::Type::NONE: // white
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 255, alpha });
-			break;
-			case Collider::Type::WALL: // blue
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 0, 255, alpha });
-			break;
-			case Collider::Type::PLAYER: // green
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 0, alpha });
-			break;
-			case Collider::Type::ENEMY: // red
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 0, 0, alpha });
-			break;
-			case Collider::Type::PLAYER_SHOT: // yellow
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 255, 255, 0, alpha });
-			break;
-			case Collider::Type::ENEMY_SHOT: // magenta
-			App->render->DrawRectangle(colliders[i]->rect, SDL_Color{ 0, 255, 255, alpha });
-			break;
-		}
-		*/
+		App->render->AddRectRenderQueue
+			(colliders[i]->rect, // size
+			colliders[i]->debugColor.r, 
+			colliders[i]->debugColor.g,
+			colliders[i]->debugColor.b,
+			colliders[i]->debugColor.a,
+				2); // layer
 	}
 }
 
@@ -138,11 +108,7 @@ bool ModuleCollisions::CleanUp()
 
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] != nullptr)
-		{
-			delete colliders[i];
-			colliders[i] = nullptr;
-		}
+		if(colliders[i] != nullptr) RELEASE(colliders[i]);
 	}
 
 	return true;

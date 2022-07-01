@@ -42,7 +42,7 @@ PlayerTemplate::PlayerTemplate(iPoint pos, std::string name) :GameObject(pos, na
 
 	#pragma region Init Collision
 
-	col = new Collider({ pos.x,pos.y, 18,24 }, this, "Player", { 3, 0});
+	col = new Collider({ pos.x,pos.y, 18, 24 }, this, "Player", { 3, 0});
 
 	#pragma endregion
 }
@@ -64,12 +64,8 @@ void PlayerTemplate::PreUpdate()
 
 void PlayerTemplate::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_O] == KEY_DOWN)
-	{
-		Die();
-	}
-
 	if(!moveBlock)
+
 	Movement();
 
 	GameObject::Update();
@@ -90,13 +86,10 @@ void PlayerTemplate::OnCollisionEnter(GameObject* g)
 {
 	if (g->name == "powerUp")
 	{
-		TestPowerUp* t = (TestPowerUp*)g;
+		TestPowerUp* t = (TestPowerUp*) g;
 
-		// If this powerUp is bad, we die
-		if (t->bad)
-		{
-			Die();
-		}
+		// If this powerUp is a red powerUp, we die
+		if (t->red) Die();
 	}
 }
 

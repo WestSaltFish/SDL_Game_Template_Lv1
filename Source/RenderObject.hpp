@@ -54,9 +54,7 @@ public:
 
 	float rotation = 0.0f;
 
-	int textureCenterX = 0;
-
-	int textureCenterY = 0;
+	SDL_Point rotCenter = { 0,0 };
 
 	#pragma endregion
 
@@ -68,16 +66,12 @@ public:
 
 	bool Draw(SDL_Renderer* renderer)
 	{
-		if (!draw) return true;
+		if (!draw) return false;
 
-		if (type == RENDER_TEXTURE)
-		{
-			DrawTexture(renderer);
-		}
-		else if (type == RENDER_RECT)
-		{
-			DrawRect(renderer);
-		}
+		if (type == RENDER_TEXTURE) DrawTexture(renderer);
+		else if (type == RENDER_RECT) DrawRect(renderer);
+
+		return true;
 	}
 
 	void DrawTexture(SDL_Renderer* renderer)
@@ -86,14 +80,14 @@ public:
 
 		if (section.w == 0 || section.h == 0)
 		{
-			if (SDL_RenderCopyEx(renderer, texture, nullptr, &destRect, rotation, NULL, flip) != 0)
+			if (SDL_RenderCopyEx(renderer, texture, nullptr, &destRect, rotation, &rotCenter, flip) != 0)
 			{
 				LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 			}
 		}
 		else
 		{
-			if (SDL_RenderCopyEx(renderer, texture, &section, &destRect, rotation, NULL, flip) != 0)
+			if (SDL_RenderCopyEx(renderer, texture, &section, &destRect, rotation, &rotCenter, flip) != 0)
 			{
 				LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 			}

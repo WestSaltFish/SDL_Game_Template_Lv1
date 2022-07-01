@@ -12,7 +12,10 @@ MenuText::MenuText()
 
 void MenuText::Update()
 {
-
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	{
+		App->scene->ChangeCurrentSceneRequest(SceneName::SCENE_GAME);
+	}
 }
 
 void MenuText::PostUpdate()

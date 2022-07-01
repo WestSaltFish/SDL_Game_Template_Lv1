@@ -171,7 +171,6 @@ void ModuleRender::AddRectRenderQueue(const SDL_Rect& rect, Uint8 r, Uint8 g, Ui
 
 void ModuleRender::AddRenderObjectRenderQueue(RenderObject renderObject)
 {
-
 	// Limit layer in the range
 	renderObject.layer = renderObject.layer > topLayer ? topLayer : renderObject.layer;
 

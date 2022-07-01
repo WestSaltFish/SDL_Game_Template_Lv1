@@ -38,6 +38,5 @@ protected:
 
 	Animation anim;
 };
-	
 
 #endif // !__PARTICLE_H__

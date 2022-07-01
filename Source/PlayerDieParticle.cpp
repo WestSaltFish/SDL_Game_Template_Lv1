@@ -18,6 +18,7 @@ PlayerDieParticle::PlayerDieParticle(iPoint position, float life, float delay) :
 	{
 		anim.PushBack({ 24 * i, 48, 24, 24 });
 	}
+
 	anim.speed = 0.2f;
 
 	anim.loop = false;

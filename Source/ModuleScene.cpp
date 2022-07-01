@@ -93,11 +93,6 @@ void ModuleScene::ChangeSceneSteptoStep()
 {
     fade += fadeSpeed;
 
-    if(fade>=253)
-    {
-        printf("hi");
-    }
-
     fade = fade > 255 ? 255 : fade < 0 ? 0 : fade;
 
     switch (changeState)

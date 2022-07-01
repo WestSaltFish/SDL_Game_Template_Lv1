@@ -42,6 +42,7 @@ public:
 	virtual void CleanUp();
 
 protected:
+
 	void AddtoList();
 };
 

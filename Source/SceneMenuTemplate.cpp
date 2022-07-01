@@ -37,11 +37,8 @@ void SceneMenuTemplate::PreUpdate()
 
 void SceneMenuTemplate::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
-	{
-		App->scene->ChangeCurrentSceneRequest(SceneName::SCENE_GAME);
-	}
-	//text->Update();
+	text->Update();
+
 	SceneMenu::Update();
 }
 

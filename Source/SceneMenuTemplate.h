@@ -23,6 +23,7 @@ public:
 	void CleanUp() override;
 private:
 	SDL_Texture* backgroundTex = nullptr;
+
 	MenuText* text = nullptr;
 };
 

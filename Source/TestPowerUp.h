@@ -10,7 +10,7 @@ public:
 
 	void OnCollisionEnter(GameObject* obj) override;
 
-	bool bad = false;
+	bool red = false;
 
 	int* powerUps = nullptr;
 

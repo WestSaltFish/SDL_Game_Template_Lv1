@@ -6,7 +6,7 @@
 
 TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"powerUp")
 {
-	this->bad = bad;
+	this->red = bad;
 
 	this->powerUps = powerUps;
 	
@@ -36,7 +36,7 @@ TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"po
 void TestPowerUp::OnCollisionEnter(GameObject* obj)
 {
 	// If we coll with player, and we aren't bad PowerUp, we die. Then scene powerUps--
-	if (obj->name == "player" && !bad)
+	if (obj->name == "player" && !red)
 	{
 		pendingToDelete = true;
 		App->audio->PlayFx(pickUpSFX);

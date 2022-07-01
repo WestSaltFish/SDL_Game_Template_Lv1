@@ -3,8 +3,8 @@
 
 #include "Module.h"
 #include "SDL_ttf.h"
+
 #include <vector>
-#include "Globals.h"
 
 enum class FontsEnum
 {
