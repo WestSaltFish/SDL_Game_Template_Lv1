@@ -5,6 +5,9 @@
 #include "ModuleAudio.h"
 #include "MenuText.h"
 
+#include "ModuleInput.h"
+#include "ModuleScene.h"
+
 SceneMenuTemplate::SceneMenuTemplate()
 {
 }
@@ -22,7 +25,7 @@ bool SceneMenuTemplate::Start()
 	uint test3 = App->audio->LoadFx("Assets/Audio/test.mp3");
 	uint test4 = App->audio->LoadFx("Assets/Audio/test.mp3");
 
-	// Temporary texture for the menu background
+	//// Temporary texture for the menu background
 	backgroundTex = App->textures->Load("Assets/Images/menuBackground.jpg");
 	return true;
 }
@@ -34,7 +37,11 @@ void SceneMenuTemplate::PreUpdate()
 
 void SceneMenuTemplate::Update()
 {
-	text->Update();
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	{
+		App->scene->ChangeCurrentSceneRequest(SceneName::SCENE_GAME);
+	}
+	//text->Update();
 	SceneMenu::Update();
 }
 

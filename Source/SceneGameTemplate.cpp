@@ -16,7 +16,7 @@ SceneGameTemplate::SceneGameTemplate()
 
 bool SceneGameTemplate::Start()
 {
-	testText = new Text({ 10,10 }, "Advanced Pixel");
+	//testText = new Text({ 10,10 }, "Advanced Pixel");
 
 	// IMPORTANT: Init the parameters of this scene
 	// because when we restart the scene, these values should be set by default

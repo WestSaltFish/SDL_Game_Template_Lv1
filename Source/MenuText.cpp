@@ -12,13 +12,10 @@ MenuText::MenuText()
 
 void MenuText::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
-	{
-		App->scene->ChangeCurrentSceneRequest(SceneName::SCENE_GAME);
-	}
+
 }
 
 void MenuText::PostUpdate()
 {
-	App->render->AddTextureRenderQueue(optionsTexture, { 10,0 }, { 0,0,0,0 }, 0.03f, 1);
+	App->render->AddTextureRenderQueue(optionsTexture, { 15,10 }, { 0,0,0,0 }, 1, 1);
 }
