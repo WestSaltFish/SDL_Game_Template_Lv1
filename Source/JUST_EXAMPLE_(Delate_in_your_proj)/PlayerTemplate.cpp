@@ -1,28 +1,29 @@
 #include "PlayerTemplate.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleInput.h"
-#include "ModuleCollisions.h"
-#include "PlayerDieParticle.h"
 #include "TestPowerUp.h"
+#include "PlayerDieParticle.h"
+
+#include "../Application.h"
+#include "../ModuleTextures.h"
+#include "../ModuleInput.h"
+#include "../ModuleCollisions.h"
 
 PlayerTemplate::PlayerTemplate(iPoint pos, std::string name) :GameObject(pos, name)
 {
 	//You can init this game object here
 
-	#pragma region Init RenderObject
+#pragma region Init RenderObject
 
 	// Player
 	SDL_Texture* tex = App->textures->Load("Assets/Images/DinoSprites-vita24x24.png");
-	renderObjects[0].InitAsTexture(tex, { position.x,position.y,24,24 }, { 0,0,24,24 }, 1, 2);
+	renderObjects[0].InitAsTexture(tex, position, { 0,0,24,24 }, 1, 2);
 	
 	// Shadow
 	SDL_Texture* tex2 = App->textures->Load("Assets/Images/shadow_24x24.png");
-	renderObjects[1].InitAsTexture(tex2, { position.x,position.y,24,24 }, { 0,0,24,24 }, 1, 0);
+	renderObjects[1].InitAsTexture(tex2, position, { 0,0,24,24 }, 1, 0);
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Init Animations
+#pragma region Init Animations
 
 	// Idle
 	for (int i = 0; i < 4; i++)
@@ -38,13 +39,13 @@ PlayerTemplate::PlayerTemplate(iPoint pos, std::string name) :GameObject(pos, na
 	}
 	move.speed = 0.2f;
 
-	#pragma endregion
+#pragma endregion
 
-	#pragma region Init Collision
+#pragma region Init Collision
 
 	col = new Collider({ pos.x,pos.y, 18, 24 }, this, "Player", { 3, 0});
 
-	#pragma endregion
+#pragma endregion
 }
 
 PlayerTemplate::~PlayerTemplate()

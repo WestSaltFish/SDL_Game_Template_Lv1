@@ -1,8 +1,9 @@
 #include "TestPowerUp.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleCollisions.h"
-#include "ModuleAudio.h"
+
+#include "../Application.h"
+#include "../ModuleTextures.h"
+#include "../ModuleCollisions.h"
+#include "../ModuleAudio.h"
 
 TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"powerUp")
 {
@@ -19,7 +20,7 @@ TestPowerUp::TestPowerUp(iPoint pos, int* powerUps, bool bad):GameObject(pos,"po
 	else
 	tex = App->textures->Load("Assets/Images/PowerUp1.png");
 
-	renderObjects[0].InitAsTexture(tex, { position.x,position.y,8,8 }, { 0,0,0,0 }, 1, 1);
+	renderObjects[0].InitAsTexture(tex, position, { 0,0,0,0 }, 1, 1);
 
 	#pragma endregion
 

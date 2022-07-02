@@ -1,7 +1,7 @@
 #ifndef __POWER_UP_H__
 #define __POWER_UP_H__
 
-#include "GameObject.h"
+#include "../GameObject.h"
 
 class TestPowerUp : public GameObject
 {

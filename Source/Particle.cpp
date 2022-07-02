@@ -21,9 +21,9 @@ void Particle::PreUpdate()
 {
 	if (life > 0)
 	{
-		if(count >= life) pendingToDelete = true;
+		if (count >= life) pendingToDelete = true;
 	}
-	else if(anim.HasFinished())
+	else if (anim.HasFinished() && life != -1)
 	{
 		pendingToDelete = true;
 	}

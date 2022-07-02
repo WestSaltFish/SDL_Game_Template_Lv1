@@ -59,7 +59,6 @@ private:
 	void ChangeSceneSteptoStep();
 
 private:
-
 	float fade = 0;
 
 	float fadeSpeed = 2.0f;

@@ -9,13 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de origen\Base Class">
-      <UniqueIdentifier>{b15fae4d-35e7-47c8-9a2f-fb338d472b02}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\Modules">
       <UniqueIdentifier>{0b5e28a0-60de-4db8-bb0d-01a95e92153f}</UniqueIdentifier>
     </Filter>
@@ -46,23 +39,44 @@
     <Filter Include="Archivos de encabezado\GameObjects">
       <UniqueIdentifier>{7d308c7b-9a6d-4b42-8262-159a3dd65bd8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\Base Class">
-      <UniqueIdentifier>{0e2c91af-6127-4092-86de-338fe0053e33}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\Other">
+      <UniqueIdentifier>{a9f089b3-2837-4fec-9b67-4654e79f6c3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\Particles">
+    <Filter Include="Archivos de origen\Other">
+      <UniqueIdentifier>{7d2c19b2-cf38-471c-9f20-a7727e20ad40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\GameObjects\Particles">
+      <UniqueIdentifier>{ff29b53f-71a7-486a-a784-9ee8fa8123b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\GameObjects\Particles">
       <UniqueIdentifier>{990c2238-6eff-49bf-9fd7-6c505d948713}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Particles">
-      <UniqueIdentifier>{ff29b53f-71a7-486a-a784-9ee8fa8123b5}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\GameObjects\Text">
+      <UniqueIdentifier>{1c21d752-42d1-40bf-ab47-010d3a5fdd90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Scenes\SceneGame">
+      <UniqueIdentifier>{c3bc3480-c7ad-4b5f-a85c-1e94db052a53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Scenes\SceneMenu">
+      <UniqueIdentifier>{ac2d41e1-f183-4180-9555-8190f7e291db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes\SceneGame">
+      <UniqueIdentifier>{e1e24f2e-9926-4856-b214-d4d9b73402f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes\SceneMenu">
+      <UniqueIdentifier>{9f1d2987-2ccd-4419-9940-5aa1409cca00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\GameObjects\Text">
+      <UniqueIdentifier>{9bf647a8-7800-426b-a711-b3a31029037a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29">
+      <UniqueIdentifier>{93410ad0-3c92-4dce-bda8-9e348b8958a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29">
+      <UniqueIdentifier>{be450722-2471-4828-81c9-c8d6947e7da8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Archivos de origen\Modules</Filter>
     </ClCompile>
@@ -84,9 +98,6 @@
     <ClCompile Include="ModuleScene.cpp">
       <Filter>Archivos de origen\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Module.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Archivos de origen\Tools</Filter>
     </ClCompile>
@@ -99,50 +110,50 @@
     <ClCompile Include="Main.cpp">
       <Filter>Archivos de origen\Application</Filter>
     </ClCompile>
-    <ClCompile Include="SceneGame.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMenu.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGameTemplate.cpp">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMenuTemplate.cpp">
-      <Filter>Archivos de origen\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerTemplate.cpp">
-      <Filter>Archivos de origen\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuText.cpp">
-      <Filter>Archivos de origen\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDieParticle.cpp">
-      <Filter>Archivos de origen\Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="TestPowerUp.cpp">
-      <Filter>Archivos de origen\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Archivos de origen\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Archivos de origen\GameObjects\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Archivos de origen\Scenes\SceneGame</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Archivos de origen\Scenes\SceneMenu</Filter>
+    </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>Archivos de origen\Base Class</Filter>
+      <Filter>Archivos de origen\GameObjects\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Archivos de origen\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Archivos de origen\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\MenuText.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneGameTemplate.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneMenuTemplate.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerTemplate.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\TestPowerUp.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClCompile>
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerDieParticle.cpp">
+      <Filter>Archivos de origen\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleScene.h">
       <Filter>Archivos de encabezado\Modules</Filter>
     </ClInclude>
@@ -188,38 +199,47 @@
     <ClInclude Include="List.h">
       <Filter>Archivos de encabezado\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="SceneGame.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMenu.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneGameTemplate.h">
-      <Filter>Archivos de encabezado\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMenuTemplate.h">
-      <Filter>Archivos de encabezado\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerTemplate.h">
-      <Filter>Archivos de encabezado\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuText.h">
-      <Filter>Archivos de encabezado\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDieParticle.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="TestPowerUp.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleFonts.h">
       <Filter>Archivos de encabezado\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Archivos de encabezado\GameObjects\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Archivos de encabezado\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Archivos de encabezado\Modules</Filter>
+    </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Archivos de encabezado\Base Class</Filter>
+      <Filter>Archivos de encabezado\GameObjects\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Archivos de encabezado\Scenes\SceneMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Archivos de encabezado\Scenes\SceneGame</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneGameTemplate.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneMenuTemplate.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\MenuText.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerTemplate.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\TestPowerUp.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
+    </ClInclude>
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerDieParticle.h">
+      <Filter>Archivos de encabezado\JUST_EXAMPLE_%28Delate_in_your_proj%29</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

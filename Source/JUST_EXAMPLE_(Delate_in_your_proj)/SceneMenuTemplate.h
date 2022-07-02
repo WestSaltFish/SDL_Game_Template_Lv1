@@ -1,7 +1,7 @@
 #ifndef __SCENE_MENU_TEMPLATE_H__
 #define __SCENE_MENU_TEMPLATE_H__
 
-#include "SceneMenu.h"
+#include "../SceneMenu.h"
 
 struct SDL_Texture;
 class MenuText;

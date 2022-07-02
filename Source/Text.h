@@ -8,6 +8,7 @@ class Text : public GameObject
 {
 public:
 	Text(iPoint pos, std::string text, FontsEnum font = FontsEnum::ADVANCED_PIXEL, SDL_Color color = {255,0,0,255});
+
 	~Text();
 
 	void ChangeText(std::string text);

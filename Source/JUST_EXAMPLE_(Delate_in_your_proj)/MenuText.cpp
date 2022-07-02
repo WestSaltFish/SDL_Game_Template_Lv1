@@ -1,9 +1,10 @@
 #include "MenuText.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModuleInput.h"
-#include "ModuleScene.h"
+
+#include "../Application.h"
+#include "../ModuleTextures.h"
+#include "../ModuleRender.h"
+#include "../ModuleInput.h"
+#include "../ModuleScene.h"
 
 MenuText::MenuText()
 {

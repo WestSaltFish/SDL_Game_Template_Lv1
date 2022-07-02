@@ -1,7 +1,7 @@
 #ifndef __PLAYER_DIE_PATICLE_H__
 #define __PLAYER_DIE_PATICLE_H__
 
-#include "Particle.h"
+#include "../Particle.h"
 
 class PlayerDieParticle : public Particle
 {

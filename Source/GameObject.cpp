@@ -40,7 +40,9 @@ void GameObject::PostUpdate()
 	// Draw textures
 	for (int i = 0; i < MAX_RENDEROBJECT; i++)
 	{
-		if (renderObjects[i].texture != nullptr && renderObjects[i].draw)
+		if (renderObjects[i].type == RenderType::RENDER_TEXTURE && !renderObjects[i].texture) continue;
+
+		if (renderObjects[i].draw)
 		{
 			renderObjects[i].destRect.x = position.x;
 			renderObjects[i].destRect.y = position.y;
@@ -62,9 +64,7 @@ void GameObject::CleanUp()
 {
 }
 
-/// <summary>
-/// Add this gameobject to List of current Scene
-/// </summary>
+
 void GameObject::AddtoList()
 {
 	App->scene->scenes[App->scene->currentSceneIndex]->AddGameObject(this);

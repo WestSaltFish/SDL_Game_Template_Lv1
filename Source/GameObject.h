@@ -1,7 +1,6 @@
 #ifndef __GAMEOBJECT_H__
 #define __GAMEOBJECT_H__
 
-#include "Point.h"
 #include "RenderObject.hpp"
 
 #define MAX_RENDEROBJECT 2
@@ -43,6 +42,9 @@ public:
 
 protected:
 
+	/// <summary>
+	/// Add this gameobject to List of current Scene
+	/// </summary>
 	void AddtoList();
 };
 

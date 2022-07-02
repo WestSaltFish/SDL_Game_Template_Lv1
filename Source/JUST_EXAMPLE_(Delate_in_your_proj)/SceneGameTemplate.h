@@ -1,7 +1,8 @@
 #ifndef __SCENE_GAME_TEMPLATE_H__
 #define __SCENE_GAME_TEMPLATE_H__
 
-#include "SceneGame.h"
+#include "../SceneGame.h"
+
 #include "SDL_ttf.h"
 
 class PlayerTemplate;
@@ -38,11 +39,6 @@ private:
 
 	uint winSFX, loseSFX;
 
-	TTF_Font* font = nullptr;
-
-	SDL_Texture* textTexture = nullptr;
-
 	Text* testText = nullptr;
-
 };
 #endif

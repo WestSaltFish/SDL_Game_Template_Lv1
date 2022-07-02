@@ -1,8 +1,8 @@
 #ifndef __PLAYER_TEMPLATE_H__
 #define __PLAYER_TEMPLATE_H__
 
-#include "GameObject.h"
-#include "Animation.h"
+#include "../GameObject.h"
+#include "../Animation.h"
 
 // enum class because is safer than enum
 enum class PlayerStates

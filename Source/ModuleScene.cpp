@@ -1,8 +1,9 @@
 #include "ModuleScene.h"
-#include "SceneMenuTemplate.h"
-#include "SceneGameTemplate.h"
 #include "Application.h"
 #include "ModuleRender.h"
+
+#include "JUST_EXAMPLE_(Delate_in_your_proj)/SceneMenuTemplate.h"
+#include "JUST_EXAMPLE_(Delate_in_your_proj)/SceneGameTemplate.h"
 
 ModuleScene::ModuleScene() : Module()
 {

@@ -101,7 +101,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MenuText.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\MenuText.cpp" />
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollisions.cpp" />
@@ -112,14 +112,14 @@
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PlayerDieParticle.cpp" />
-    <ClCompile Include="PlayerTemplate.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerDieParticle.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerTemplate.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneGame.cpp" />
-    <ClCompile Include="SceneGameTemplate.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneGameTemplate.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
-    <ClCompile Include="SceneMenuTemplate.cpp" />
-    <ClCompile Include="TestPowerUp.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneMenuTemplate.cpp" />
+    <ClCompile Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\TestPowerUp.cpp" />
     <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +130,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MemLeaks.h" />
-    <ClInclude Include="MenuText.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\MenuText.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleCollisions.h" />
@@ -141,16 +141,16 @@
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="PlayerDieParticle.h" />
-    <ClInclude Include="PlayerTemplate.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerDieParticle.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\PlayerTemplate.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RenderObject.hpp" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGame.h" />
-    <ClInclude Include="SceneGameTemplate.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneGameTemplate.h" />
     <ClInclude Include="SceneMenu.h" />
-    <ClInclude Include="SceneMenuTemplate.h" />
-    <ClInclude Include="TestPowerUp.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\SceneMenuTemplate.h" />
+    <ClInclude Include="JUST_EXAMPLE_%28Delate_in_your_proj%29\TestPowerUp.h" />
     <ClInclude Include="Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

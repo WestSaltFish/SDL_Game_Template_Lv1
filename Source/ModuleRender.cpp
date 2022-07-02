@@ -119,15 +119,13 @@ void ModuleRender::AddTextureRenderQueue(SDL_Texture* texture, iPoint pos, SDL_R
 {
 	RenderObject renderObject;
 
-	SDL_Rect destRect = { 0,0 };
-
 	// Limit layer in the range
 	layer = layer > topLayer ? topLayer : layer;
 
 	//If texture in UI layer, it moves alongside the camera-> , speed = 0;
 	if (topLayer >= 0 && layer == topLayer) speed = 0;
 
-	renderObject.InitAsTexture(texture, destRect, section, layer, orderInlayer, flip, rotation, scale, speed);
+	renderObject.InitAsTexture(texture, { 0,0 }, section, layer, orderInlayer, flip, rotation, scale, speed);
 
 	renderObject.destRect.x = (int)(-camera.x * speed) + pos.x * App->window->scale;
 	renderObject.destRect.y = (int)(-camera.y * speed) + pos.y * App->window->scale;

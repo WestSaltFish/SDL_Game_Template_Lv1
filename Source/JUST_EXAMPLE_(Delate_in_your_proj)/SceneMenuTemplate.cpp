@@ -1,12 +1,12 @@
 #include "SceneMenuTemplate.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModuleAudio.h"
 #include "MenuText.h"
 
-#include "ModuleInput.h"
-#include "ModuleScene.h"
+#include "../Application.h"
+#include "../ModuleTextures.h"
+#include "../ModuleRender.h"
+#include "../ModuleAudio.h"
+#include "../ModuleInput.h"
+#include "../ModuleScene.h"
 
 SceneMenuTemplate::SceneMenuTemplate()
 {

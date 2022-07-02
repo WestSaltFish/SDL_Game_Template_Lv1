@@ -1,14 +1,14 @@
 #include "SceneGameTemplate.h"
 #include "PlayerTemplate.h"
-#include "Application.h"
-#include "ModuleTextures.h"
 #include "TestPowerUp.h"
-#include "ModuleRender.h"
-#include "ModuleInput.h"
-#include "ModuleScene.h"
-#include "ModuleAudio.h"
-#include "Text.h"
 
+#include "../Application.h"
+#include "../ModuleTextures.h"
+#include "../ModuleRender.h"
+#include "../ModuleInput.h"
+#include "../ModuleScene.h"
+#include "../ModuleAudio.h"
+#include "../Text.h"
 
 SceneGameTemplate::SceneGameTemplate()
 {
@@ -108,14 +108,10 @@ void SceneGameTemplate::PostUpdate()
 		App->render->AddTextureRenderQueue(loseTex, { 0,0 }, { 0,0,0,0 }, 1, App->render->topLayer);
 	}
 
-	App->render->AddTextureRenderQueue(textTexture, { 10,10 }, { 0,0,0,0 }, 2.0f, 4);
-
 	SceneGame::PostUpdate();
 }
 
 void SceneGameTemplate::CleanUp()
 {
-	SDL_DestroyTexture(textTexture);
-
 	SceneGame::CleanUp();
 }
