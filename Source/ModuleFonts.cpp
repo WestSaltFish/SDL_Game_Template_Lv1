@@ -8,7 +8,7 @@ bool ModuleFonts::Start()
 {  
     TTF_Init();
 
-    // Default font
+    // Default font --- Enum 0
     TTF_Font* advancedPixelFont = TTF_OpenFont("Assets/Fonts/advanced_pixel.ttf", 32);
 
     if (!advancedPixelFont) 
@@ -16,9 +16,10 @@ bool ModuleFonts::Start()
         printf("TTF_OpenFont: %s\n", TTF_GetError());
     }
 
+    // Add to the font list
     fonts.push_back(advancedPixelFont);
 
-    // Default font 2
+    // Default font 2 --- Enum 1
     TTF_Font* oldLondonFont = TTF_OpenFont("Assets/Fonts/old_london.ttf", 32);
 
     if (!oldLondonFont) 
@@ -26,6 +27,7 @@ bool ModuleFonts::Start()
         printf("TTF_OpenFont: %s\n", TTF_GetError());
     }
 
+    // Add to the font list
     fonts.push_back(oldLondonFont);
 
     return true;
